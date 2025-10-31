@@ -1,6 +1,7 @@
 
 html {
   scroll-behavior: smooth;
+  --bg-color: #FFFBE2;
 }
 
 /* ---- utils start ---------*/
@@ -20,10 +21,10 @@ html {
   text-overflow: ellipsis;
 }
 
-.nowrap5 {
+.nowrap3 {
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 5;
+  -webkit-line-clamp: 3;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -67,6 +68,25 @@ html {
   border-radius: 6px;
 }
 
+.no-scrollbar::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+
+.no-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0);
+  border-radius: 0px;
+}
+
+.no-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0);
+}
+
+.no-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 0px;
+}
+
 
 /*common*/
 @font-face {
@@ -76,152 +96,4 @@ html {
 
 body {
   font-family: SourceHanSansCN, system-ui;
-}
-
-
-.sub-footer {
-  text-align: center;
-  color: #B01D0D !important;
-}
-
-.sub-footer p {
-  margin-bottom: .06rem;
-
-}
-
-.sub-footer p:first-child a {
-  margin: 0 .04rem;
-}
-
-.sub-footer .guian a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-}
-
-.sub-footer .sub-icons {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: .1rem;
-  padding-top: .2rem;
-}
-
-.sel {
-  font-size: .16rem !important;
-  width: 1.33rem !important;
-  height: .28rem !important;
-  border: 1px solid #333 !important;
-}
-
-.sel option {
-
-  font-size: .16rem !important;
-
-}
-
-.news-swiper__title {
-  font-size: .24rem;
-  color: #3E3E3E;
-  text-align: center;
-  padding-top: .4rem;
-}
-
-.news-swiper-indicator {
-  display: flex;
-  gap: .17rem;
-  justify-content: center;
-  align-items: center;
-  padding: 0 .1rem;
-  flex-wrap: wrap;
-  margin-top: .15rem;
-}
-
-.swiper-indicator__dot {
-  width: .3rem;
-  height: .08rem;
-  border-radius: 1rem;
-  background: #FFD40C;
-  margin-bottom: .1rem;
-  cursor: pointer;
-}
-
-.swiper-indicator__dot--active {
-  background: #C92F1E !important;
-}
-
-.count-sq {
-  border: .04rem solid #C92F1E;
-  border-radius: .12rem;
-  display: none;
-  background: #fff;
-  width: 7.40rem;
-  position: absolute;
-  top: .7rem;
-  left: 4.65rem;
-  padding: .3rem .3rem .1rem;
-  font-size: .16rem;
-  transform: translateY(-100%);
-}
-
-.close {
-  background: #81a3d0;
-  color: #fff;
-  cursor: pointer;
-  border-radius: .06rem;
-  font-size: .24rem;
-  width: .24rem;
-  height: .24rem;
-  padding: .02rem;
-  line-height: .24rem;
-  position: absolute;
-  top: .15rem;
-  right: .15rem;
-  text-align: center;
-}
-
-.area-title {
-  font-size: .18rem;
-  line-height: .5rem;
-  margin-bottom: 30px;
-}
-
-.area-title strong {
-  color: #c11316;
-  font-size: .24rem;
-  font-weight: bold;
-  padding-right: .8rem;
-}
-
-.statistics-list li {
-  width: 2rem;
-  float: left;
-  margin: 0 .2rem .2rem 0;
-}
-.statistics-list li:nth-of-type(3n){
-  margin-right:0
-}
-.city-count {
-  float: right;
-}
-
-
-
-.statistics {
-  border: 1px solid #81a3d0;
-  height: .15rem;
-  line-height: .15rem;
-}
-
-.statistics p {
-  background: #81a3d0;
-  height: inherit;
-  float: left;
-}
-
-.statistics span {
-  font-size: .12rem;
-  padding-right: .03rem;
-  float: right;
 }
