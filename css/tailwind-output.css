@@ -644,6 +644,10 @@ body {
   z-index: 20;
 }
 
+.z-30 {
+  z-index: 30;
+}
+
 .m-0 {
   margin: 0px;
 }
@@ -685,12 +689,76 @@ body {
   margin-top: .28rem;
 }
 
+.mt-\[1\.44rem\] {
+  margin-top: 1.44rem;
+}
+
+.mt-\[1\.94rem\] {
+  margin-top: 1.94rem;
+}
+
+.mt-\[2\.7rem\] {
+  margin-top: 2.7rem;
+}
+
+.-mt-\[2\.7rem\] {
+  margin-top: -2.7rem;
+}
+
+.mt-\[2\.5rem\] {
+  margin-top: 2.5rem;
+}
+
+.mt-\[1\.06rem\] {
+  margin-top: 1.06rem;
+}
+
+.-mt-\[\.5rem\] {
+  margin-top: -.5rem;
+}
+
+.mt-\[\.29rem\] {
+  margin-top: .29rem;
+}
+
+.mt-\[1\.37rem\] {
+  margin-top: 1.37rem;
+}
+
+.mt-\[\] {
+  margin-top: ;
+}
+
+.mt-\[2\.63rem\] {
+  margin-top: 2.63rem;
+}
+
+.mt-\[\.2rem\] {
+  margin-top: .2rem;
+}
+
+.-mt-\[\.2rem\] {
+  margin-top: -.2rem;
+}
+
+.-mt-\[\.4rem\] {
+  margin-top: -.4rem;
+}
+
+.-mt-\[1\.4rem\] {
+  margin-top: -1.4rem;
+}
+
 .block {
   display: block;
 }
 
 .flex {
   display: flex;
+}
+
+.grid {
+  display: grid;
 }
 
 .h-\[1\.3rem\] {
@@ -711,6 +779,18 @@ body {
 
 .h-\[1\.1rem\] {
   height: 1.1rem;
+}
+
+.h-\[\] {
+  height: ;
+}
+
+.h-\[14\.64rem\] {
+  height: 14.64rem;
+}
+
+.h-\[5\.22rem\] {
+  height: 5.22rem;
 }
 
 .min-h-0 {
@@ -785,6 +865,26 @@ body {
   width: 2.98rem;
 }
 
+.w-\[\] {
+  width: ;
+}
+
+.w-\[8\.19rem\] {
+  width: 8.19rem;
+}
+
+.w-\[10\.04rem\] {
+  width: 10.04rem;
+}
+
+.w-\[10\.32rem\] {
+  width: 10.32rem;
+}
+
+.w-\[7\.07rem\] {
+  width: 7.07rem;
+}
+
 .max-w-\[10\.80rem\] {
   max-width: 10.80rem;
 }
@@ -823,6 +923,22 @@ body {
   gap: .7rem;
 }
 
+.gap-\[\] {
+  gap: ;
+}
+
+.gap-\[\.42rem\] {
+  gap: .42rem;
+}
+
+.gap-\[\.38rem\] {
+  gap: .38rem;
+}
+
+.gap-\[\.33rem\] {
+  gap: .33rem;
+}
+
 .border-none {
   border-style: none;
 }
@@ -845,6 +961,10 @@ body {
 
 .bg-center {
   background-position: center;
+}
+
+.bg-\[bottom_center\] {
+  background-position: bottom center;
 }
 
 .bg-no-repeat {
@@ -873,6 +993,30 @@ body {
 
 .pt-\[1\.52rem\] {
   padding-top: 1.52rem;
+}
+
+.pt-\[\.73rem\] {
+  padding-top: .73rem;
+}
+
+.pt-\[\.75rem\] {
+  padding-top: .75rem;
+}
+
+.pt-\[\.79rem\] {
+  padding-top: .79rem;
+}
+
+.pt-\[\.82rem\] {
+  padding-top: .82rem;
+}
+
+.pt-\[2\.63rem\] {
+  padding-top: 2.63rem;
+}
+
+.text-center {
+  text-align: center;
 }
 
 .indent-\[2em\] {
@@ -927,6 +1071,20 @@ body {
 .text-\[\#6d3f3f\] {
   --tw-text-opacity: 1;
   color: rgb(109 63 63 / var(--tw-text-opacity, 1));
+}
+
+.text-\[\] {
+  color: ;
+}
+
+.text-\[\#EC8F00\] {
+  --tw-text-opacity: 1;
+  color: rgb(236 143 0 / var(--tw-text-opacity, 1));
+}
+
+.text-\[\#FF6200\] {
+  --tw-text-opacity: 1;
+  color: rgb(255 98 0 / var(--tw-text-opacity, 1));
 }
 
 .opacity-0 {
