@@ -2,14 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
-:root{
+:root {
 
+}
+@layer base {
+  body {
+    background-color: #FFFBE2;
+  }
 }
 
 @layer components {
 
 
 
+
+  .image-placeholder {
+    background: url('../images/ly/placeholder.png') no-repeat 8px 8px;
+    background-size: 3rem auto;
+    padding-left: 0;
+  }
+
+
+  .image-placeholder:not(:placeholder-shown) {
+    background: none;
+  }
 
 
 }
