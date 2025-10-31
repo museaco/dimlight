@@ -1,10 +1,5 @@
-function nano() {
+window.__auther__ = 'bHVzaGVuZzEwdkAxNjMsY29t';
 
-  window.__auther__ = 'bHVzaGVuZzEwdkAxNjMsY29t';
-
-  $(window).on('load', function() {
-    $('#page-loading').remove();
-  });
-}
-
-nano();
+$(window).on('load', function() {
+  $('#page-loading').remove();
+});
