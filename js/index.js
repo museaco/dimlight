@@ -27,9 +27,8 @@ $(window).on('load', function() {
     scrollTrigger: {
       trigger: '#fl-section',
       scrub: true,
-      pin: true,
-      start: 'top 20%',
-      end: '+=1000',
+      start: 'top 90%',
+      end: 'bottom bottom',
       markers: true,
 
     },
@@ -39,9 +38,8 @@ $(window).on('load', function() {
   fl_tl.from('img[data-fl="02"]', { opacity: 0, x: '-1.8rem' });
   fl_tl.from('div[data-fl="bg"]', { opacity: 0, scale: .8 });
   fl_tl.from('img[data-fl="04"]', { opacity: 0, y: '-0.8rem' });
-
-  fl_tl.from('img[data-fl="03"]', { opacity: 0, x: '0.8rem' });
-  fl_tl.from('div[data-fl="05"]', { opacity: 0, y: '-0.8rem' });
+  fl_tl.from('img[data-fl="03"]', { opacity: 0, x: '-0.8rem' });
+  fl_tl.from('div[data-fl="05"]', { opacity: 0, x: '0.8rem' }, '<');
 
 });
 
