@@ -29,7 +29,7 @@ $(window).on('load', function() {
       scrub: true,
       start: 'top 90%',
       end: 'bottom bottom',
-      markers: true,
+      // markers: true,
 
     },
   });
@@ -40,6 +40,20 @@ $(window).on('load', function() {
   fl_tl.from('img[data-fl="04"]', { opacity: 0, y: '-0.8rem' });
   fl_tl.from('img[data-fl="03"]', { opacity: 0, x: '-0.8rem' });
   fl_tl.from('div[data-fl="05"]', { opacity: 0, x: '0.8rem' }, '<');
+
+  /** data-btn="rule" */
+  $('button[data-btn="rule"]').on('click', function() {
+    const tl = gsap.timeline();
+    tl.from('#rule-modal-content', { scale: .9, duration: 0.4, opacity: 0, ease: 'back.out' });
+    tl.to('#rule-modal', { autoAlpha: 1, duration: 0.2 }, '<');
+
+  });
+
+  /** data-btn="close-rule" */
+  $('img[data-btn="close-rule"]').on('click', function() {
+
+    gsap.to('#rule-modal', { autoAlpha: 0, duration: 0.3 });
+  });
 
 });
 

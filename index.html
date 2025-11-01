@@ -168,11 +168,11 @@
       </div>
 
       <div class="flex gap-[.7rem] justify-center mt-[.28rem]">
-        <button data-press class="relative w-[1.9rem] h-[1.1rem] bg-no-repeat bg-[length:100%_100%] bg-center" style="background-image: url('./images/ly/8453.png')">
+        <button data-btn="submit" data-press class="relative w-[1.9rem] h-[1.1rem] bg-no-repeat bg-[length:100%_100%] bg-center" style="background-image: url('./images/ly/8453.png')">
         </button>
-        <button data-press class="relative w-[2.82rem] h-[1.1rem] bg-no-repeat bg-[length:100%_100%] bg-center" style="background-image: url('./images/ly/924.png')">
+        <button data-btn="myly" data-press class="relative w-[2.82rem] h-[1.1rem] bg-no-repeat bg-[length:100%_100%] bg-center" style="background-image: url('./images/ly/924.png')">
         </button>
-        <button data-press class="relative w-[2.98rem] h-[1.1rem] bg-no-repeat bg-[length:100%_100%] bg-center" style="background-image: url('./images/ly/344.png')">
+        <button data-btn="rule" data-press class="relative w-[2.98rem] h-[1.1rem] bg-no-repeat bg-[length:100%_100%] bg-center" style="background-image: url('./images/ly/344.png')">
         </button>
       </div>
     </section>
@@ -286,25 +286,25 @@
 </div>
 
 <!--活动规则弹窗-->
-<div class="fixed inset-0 bg-black/30 z-[1500] touch-none flex flex-col justify-center items-center">
+<div id="rule-modal" class="fixed inset-0 bg-black/40 z-[1500] touch-none flex flex-col justify-center items-center invisible">
 
 
-  <div class="relative w-[9.17rem]">
-    <img data-press src="./images/gz/671390.png" class="absolute -top-[.4rem] right-[.28rem] select-none  w-[1.11rem] z-1 cursor-pointer" alt="" draggable="false">
+  <div class="relative w-[9.17rem] touch-none" id="rule-modal-content" >
+    <img data-btn="close-rule" data-press src="./images/gz/671390.png" class="absolute -top-[.4rem] right-[.28rem] select-none  w-[1.11rem] z-20 cursor-pointer" alt="" draggable="false">
 
     <img src="./images/gz/3434312.png" class="w-full block mx-auto select-none pointer-events-none" draggable="false" alt="">
-    <div class="absolute inset-0  ">
+    <div class="absolute inset-0  z-10">
 
-      <div class="text-[#8F4900] text-[.45rem] h-[8.2rem] overflow-y-auto mt-[3.2rem] ml-[.9rem] mr-[.9rem]">
-        <p>1.微光计划联合四家品牌奶茶，每期一款品牌新品奶茶福利，四期共10000杯，先到先得！一个用户每期均有机会获得一杯奶茶，下一期可再次参与互动。活动期内1人最多可获得4杯奶茶哦！</p>
-        <p>2.第一期奖品——梁小糖立冬新品荔浦芋椰粒奶茶，一共2500杯，用户上传至少一条身边的暖心故事，上传成功后，等待审核，后台审核通过后，奶茶券将自动发放至 “我的留言”，请前往查看。（审核时长为1-2个工作日，具体以实际处理进度为准）</p>
-        <p>3.上传的内容具体、真实，文字表达清晰，无违法或不当言论，字数建议200字以内，不可少于50字，可搭配10M以内的图片。</p>
-        <p>4.每期活动可通过点击【我的留言】，查询留言是否通过以及奶茶领取方式。</p>
-        <p>5.每期留言点赞前20的用户，可额外获得奶茶品牌提供的福利周边哦，本期奖品为——梁小糖XXX。具体以后台数据为准，由广西云小助手联系中奖用户沟通领奖事宜。</p>
-        <p>6.活动仅在广西云客户端举行，参与活动需要下载、注册广西云客户端。</p>
-        <p>7.奶茶券仅限商家小程序下单使用。请复制奶茶兑换码，录入“梁小糖”小程序，即可兑换奶茶。</p>
-        <p>8.未尽事宜，请联系广西云小助手（微信号：GXYun001）</p>
-        <p>*本活动最终解释权归广西云客户端所有。</p>
+      <div class="text-[#8F4900] text-[.45rem] h-[8.2rem] overflow-y-auto mt-[3.2rem] ml-[.9rem] mr-[.9rem] ly-list-scrollbar">
+        <p class="indent-[0em] mb-[.3rem]">1.微光计划联合四家品牌奶茶，每期一款品牌新品奶茶福利，四期共10000杯，先到先得！一个用户每期均有机会获得一杯奶茶，下一期可再次参与互动。活动期内1人最多可获得4杯奶茶哦！</p>
+        <p class="indent-[0em] mb-[.3rem]">2.第一期奖品——梁小糖立冬新品荔浦芋椰粒奶茶，一共2500杯，用户上传至少一条身边的暖心故事，上传成功后，等待审核，后台审核通过后，奶茶券将自动发放至 “我的留言”，请前往查看。（审核时长为1-2个工作日，具体以实际处理进度为准）</p>
+        <p class="indent-[0em] mb-[.3rem]">3.上传的内容具体、真实，文字表达清晰，无违法或不当言论，字数建议200字以内，不可少于50字，可搭配10M以内的图片。</p>
+        <p class="indent-[0em] mb-[.3rem]">4.每期活动可通过点击【我的留言】，查询留言是否通过以及奶茶领取方式。</p>
+        <p class="indent-[0em] mb-[.3rem]">5.每期留言点赞前20的用户，可额外获得奶茶品牌提供的福利周边哦，本期奖品为——梁小糖XXX。具体以后台数据为准，由广西云小助手联系中奖用户沟通领奖事宜。</p>
+        <p class="indent-[0em] mb-[.3rem]">6.活动仅在广西云客户端举行，参与活动需要下载、注册广西云客户端。</p>
+        <p class="indent-[0em] mb-[.3rem]">7.奶茶券仅限商家小程序下单使用。请复制奶茶兑换码，录入“梁小糖”小程序，即可兑换奶茶。</p>
+        <p class="indent-[0em] mb-[.3rem]">8.未尽事宜，请联系广西云小助手（微信号：GXYun001）</p>
+        <p class="indent-[0em] mb-[.3rem]">*本活动最终解释权归广西云客户端所有。</p>
       </div>
 
     </div>

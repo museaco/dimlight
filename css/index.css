@@ -50,21 +50,21 @@ html {
 }
 
 .ly-list-scrollbar::-webkit-scrollbar {
-  width: .18rem;
-  height: .18rem;
+  width: .1rem;
+  height: .1rem;
 }
 
 .ly-list-scrollbar::-webkit-scrollbar-thumb {
-  background: #FFDD68;
+  background: RGB(239,184,127);
   border-radius: 1.8rem;
 }
 
 .ly-list-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #FFDD68;
+  background: RGB(239,184,127);
 }
 
 .ly-list-scrollbar::-webkit-scrollbar-track {
-  background: #FFFEE1;
+  background: transparent;
   border-radius: 6px;
 }
 
