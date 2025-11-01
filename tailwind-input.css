@@ -20,6 +20,19 @@
     transform: scale(0.95);
 
   }
+  .wtgsh{
+    background-image: url("../images/12478.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center center;
+
+  }
+  .ckncq{
+    background-image: url("../images/51903.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center center;
+  }
 
   @font-face {
     font-family: 'SourceHanSansCN';

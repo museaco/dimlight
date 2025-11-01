@@ -567,6 +567,20 @@ button[data-press]:active, img[data-press]:active {
   transform: scale(0.95);
 }
 
+.wtgsh{
+  background-image: url("../images/12478.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center center;
+}
+
+.ckncq{
+  background-image: url("../images/51903.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center center;
+}
+
 @font-face {
   font-family: 'SourceHanSansCN';
 
@@ -671,12 +685,16 @@ button[data-press]:active, img[data-press]:active {
   right: .3rem;
 }
 
-.right-\[\.68rem\] {
-  right: .68rem;
+.right-\[\.66rem\] {
+  right: .66rem;
 }
 
 .top-0 {
   top: 0px;
+}
+
+.top-\[\.05rem\] {
+  top: .05rem;
 }
 
 .top-\[1\.16rem\] {
@@ -693,6 +711,10 @@ button[data-press]:active, img[data-press]:active {
 
 .top-\[4\.2rem\] {
   top: 4.2rem;
+}
+
+.top-\[\.025rem\] {
+  top: .025rem;
 }
 
 .z-10 {
@@ -800,10 +822,6 @@ button[data-press]:active, img[data-press]:active {
   margin-top: 1.57rem;
 }
 
-.mt-\[1\.5rem\] {
-  margin-top: 1.5rem;
-}
-
 .mt-\[1rem\] {
   margin-top: 1rem;
 }
@@ -814,6 +832,10 @@ button[data-press]:active, img[data-press]:active {
 
 .mt-\[3\.2rem\] {
   margin-top: 3.2rem;
+}
+
+.mt-\[3\.5rem\] {
+  margin-top: 3.5rem;
 }
 
 .block {
@@ -912,8 +934,8 @@ button[data-press]:active, img[data-press]:active {
   width: 4.44rem;
 }
 
-.w-\[4\.6rem\] {
-  width: 4.6rem;
+.w-\[4\.5rem\] {
+  width: 4.5rem;
 }
 
 .w-\[5\.02rem\] {
@@ -1027,6 +1049,10 @@ button[data-press]:active, img[data-press]:active {
   gap: .33rem;
 }
 
+.gap-\[\.3rem\] {
+  gap: .3rem;
+}
+
 .gap-\[\.4rem\] {
   gap: .4rem;
 }
@@ -1088,12 +1114,21 @@ button[data-press]:active, img[data-press]:active {
   padding: 0px;
 }
 
+.px-\[\.22rem\] {
+  padding-left: .22rem;
+  padding-right: .22rem;
+}
+
 .pb-\[\.69rem\] {
   padding-bottom: .69rem;
 }
 
 .pl-\[\.47rem\] {
   padding-left: .47rem;
+}
+
+.pr-\[\.15rem\] {
+  padding-right: .15rem;
 }
 
 .pr-\[\.32rem\] {
@@ -1163,6 +1198,11 @@ button[data-press]:active, img[data-press]:active {
 .text-\[\#441D00\] {
   --tw-text-opacity: 1;
   color: rgb(68 29 0 / var(--tw-text-opacity, 1));
+}
+
+.text-\[\#562C00\] {
+  --tw-text-opacity: 1;
+  color: rgb(86 44 0 / var(--tw-text-opacity, 1));
 }
 
 .text-\[\#6d3f3f\] {
