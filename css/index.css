@@ -99,11 +99,11 @@ body {
 }
 
 
-button[data-press] {
+button[data-press], img[data-press] {
   transition: transform 0.1s;
 }
 
-button[data-press]:active {
+button[data-press]:active, img[data-press]:active {
   transform: scale(0.95);
 
 }
