@@ -60,7 +60,7 @@ html {
 }
 
 .ly-list-scrollbar::-webkit-scrollbar-thumb:hover {
-  background:#FFDD68;
+  background: #FFDD68;
 }
 
 .ly-list-scrollbar::-webkit-scrollbar-track {
@@ -96,4 +96,14 @@ html {
 
 body {
   font-family: SourceHanSansCN, system-ui;
+}
+
+
+button[data-press] {
+  transition: transform 0.1s;
+}
+
+button[data-press]:active {
+  transform: scale(0.95);
+
 }

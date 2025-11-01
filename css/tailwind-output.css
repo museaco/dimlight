@@ -107,7 +107,7 @@
 }
 
 /*
-! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com
+! tailwindcss v3.4.18 | MIT License | https://tailwindcss.com
 */
 
 /*
@@ -705,6 +705,10 @@ body {
   margin-top: .29rem;
 }
 
+.mt-\[\.3rem\] {
+  margin-top: .3rem;
+}
+
 .mt-\[\.6rem\] {
   margin-top: .6rem;
 }
@@ -735,10 +739,6 @@ body {
 
 .mt-\[2\.5rem\] {
   margin-top: 2.5rem;
-}
-
-.mt-\[\.3rem\] {
-  margin-top: .3rem;
 }
 
 .block {
@@ -971,6 +971,11 @@ body {
   background-repeat: no-repeat;
 }
 
+.object-cover {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 .p-0 {
   padding: 0px;
 }
@@ -1011,6 +1016,10 @@ body {
   text-indent: 2em;
 }
 
+.text-\[\.3rem\] {
+  font-size: .3rem;
+}
+
 .text-\[\.42rem\] {
   font-size: .42rem;
 }
@@ -1025,10 +1034,6 @@ body {
 
 .text-\[0px\] {
   font-size: 0px;
-}
-
-.text-\[\.3rem\] {
-  font-size: .3rem;
 }
 
 .leading-\[\.5rem\] {
@@ -1059,6 +1064,11 @@ body {
   color: rgb(158 86 0 / var(--tw-text-opacity, 1));
 }
 
+.text-\[\#D86B30\] {
+  --tw-text-opacity: 1;
+  color: rgb(216 107 48 / var(--tw-text-opacity, 1));
+}
+
 .text-\[\#DD7D00\] {
   --tw-text-opacity: 1;
   color: rgb(221 125 0 / var(--tw-text-opacity, 1));
@@ -1082,11 +1092,6 @@ body {
 .text-\[\#FF6200\] {
   --tw-text-opacity: 1;
   color: rgb(255 98 0 / var(--tw-text-opacity, 1));
-}
-
-.text-\[\#D86B30\] {
-  --tw-text-opacity: 1;
-  color: rgb(216 107 48 / var(--tw-text-opacity, 1));
 }
 
 .opacity-0 {
