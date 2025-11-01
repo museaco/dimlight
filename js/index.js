@@ -41,18 +41,31 @@ $(window).on('load', function() {
   fl_tl.from('img[data-fl="03"]', { opacity: 0, x: '-0.8rem' });
   fl_tl.from('div[data-fl="05"]', { opacity: 0, x: '0.8rem' }, '<');
 
-  /** data-btn="rule" */
-  $('button[data-btn="rule"]').on('click', function() {
-    const tl = gsap.timeline();
-    tl.from('#rule-modal-content', { scale: .9, duration: 0.4, opacity: 0, ease: 'back.out' });
-    tl.to('#rule-modal', { autoAlpha: 1, duration: 0.2 }, '<');
+  function createDialogueAnimate({
+    showBtn,
+    hideBtn,
+    modal,
+  }) {
+    /** 点击弹出 */
+    $(showBtn).on('click', function() {
+      const tl = gsap.timeline();
+      tl.from(`${modal} [data-rule-modal-content] `, { scale: .9, duration: 0.4, opacity: 0, ease: 'back.out' });
+      tl.to(modal, { autoAlpha: 1, duration: 0.2 }, '<');
 
-  });
+    });
 
-  /** data-btn="close-rule" */
-  $('img[data-btn="close-rule"]').on('click', function() {
+    /** 点击关闭*/
+    $(hideBtn).on('click', function() {
 
-    gsap.to('#rule-modal', { autoAlpha: 0, duration: 0.3 });
+      gsap.to(modal, { autoAlpha: 0, duration: 0.3 });
+    });
+
+  }
+
+  createDialogueAnimate({
+    showBtn: 'button[data-btn="rule"]',
+    hideBtn: 'img[data-btn="close-rule"]',
+    modal: '#rule-modal',
   });
 
 });

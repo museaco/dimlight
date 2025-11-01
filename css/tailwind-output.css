@@ -660,6 +660,26 @@ body {
   right: .28rem;
 }
 
+.left-1\/2 {
+  left: 50%;
+}
+
+.top-\[1rem\] {
+  top: 1rem;
+}
+
+.top-\[2rem\] {
+  top: 2rem;
+}
+
+.top-\[1\.5rem\] {
+  top: 1.5rem;
+}
+
+.top-\[1\.7rem\] {
+  top: 1.7rem;
+}
+
 .z-10 {
   z-index: 10;
 }
@@ -977,6 +997,10 @@ body {
   width: 9.17rem;
 }
 
+.w-\[4\.44rem\] {
+  width: 4.44rem;
+}
+
 .min-w-0 {
   min-width: 0px;
 }
@@ -991,6 +1015,11 @@ body {
 
 .shrink-0 {
   flex-shrink: 0;
+}
+
+.-translate-x-1\/2 {
+  --tw-translate-x: -50%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .transform {
