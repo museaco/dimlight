@@ -88,22 +88,3 @@ html {
 }
 
 
-/*common*/
-@font-face {
-  font-family: 'SourceHanSansCN';
-  src: url('../fonts/SourceHanSansCN-Regular.otf') format('opentype');
-}
-
-body {
-  font-family: SourceHanSansCN, system-ui;
-}
-
-
-button[data-press], img[data-press] {
-  transition: transform 0.1s;
-}
-
-button[data-press]:active, img[data-press]:active {
-  transform: scale(0.95);
-
-}

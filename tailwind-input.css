@@ -5,15 +5,43 @@
 :root {
 
 }
+
 @layer base {
   body {
     background-color: var(--bg-color);
+    font-family: SourceHanSansCN, system-ui;
   }
+
+  button[data-press], img[data-press] {
+    transition: transform 0.1s;
+  }
+
+  button[data-press]:active, img[data-press]:active {
+    transform: scale(0.95);
+
+  }
+
+  @font-face {
+    font-family: 'SourceHanSansCN';
+    src: url('../fonts/SourceHanSansCN-Regular-Alphabetic.woff2') format('woff2'),
+    url('../fonts/SourceHanSansCN-Regular-Alphabetic.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'FZZYK';
+    src: url('../fonts/FZZYK--GBK1-0.woff2') format('woff2'),
+    url('../fonts/FZZYK--GBK1-0.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
 }
 
 @layer components {
-
-
 
 
   .image-placeholder {

@@ -11,8 +11,8 @@
   <title>微光计划</title>
   <link href="https://bookingmaster.gxrb.com.cn/front/2022/2022parper/img/favicon.png" rel="shortcut icon">
   <link href="https://bookingmaster.gxrb.com.cn/front/2022/2022parper/img/favicon.png" rel="bookmark" type="image/x-icon">
-
-
+  <link rel="preload" href="./fonts/FZZYK--GBK1-0.woff" as="font" type="font/woff" crossorigin>
+  <link rel="preload" href="./fonts/FZZYK--GBK1-0.woff2" as="font" type="font/woff2" crossorigin>
   <link href="./css/tailwind-output.css" rel="stylesheet">
   <link href="./css/index.css" rel="stylesheet">
 
@@ -287,17 +287,13 @@
 
 <!--活动规则弹窗-->
 <div id="rule-modal" class="fixed inset-0 bg-black/40 z-[1500] touch-none flex flex-col justify-center items-center invisible">
-
-
-  <div class="relative w-[9.17rem] touch-none" data-rule-modal-content >
+  <div class="relative w-[9.17rem] touch-none" data-modal-content>
     <img data-btn="close-rule" data-press src="images/671390.png" class="absolute -top-[.4rem] right-[.28rem] select-none  w-[1.11rem] z-20 cursor-pointer" alt="" draggable="false">
     <img src="images/567132.png" class="w-[4.44rem] block mx-auto select-none pointer-events-none absolute top-[1.7rem] left-1/2 -translate-x-1/2" draggable="false" alt="">
     <img src="images/56123.png" class="w-full block mx-auto select-none pointer-events-none" draggable="false" alt="">
 
-
     <div class="absolute inset-0  z-10">
-
-      <div class="text-[#8F4900] text-[.45rem] h-[8.2rem] overflow-y-auto mt-[3.2rem] ml-[.9rem] mr-[.9rem] ly-list-scrollbar">
+      <div class="text-[#8F4900] text-[.45rem] h-[8.2rem] overflow-y-auto mt-[3.2rem] ml-[.9rem] mr-[.9rem] ly-list-scrollbar font-FZZYK">
         <p class="indent-[0em] mb-[.3rem]">1.微光计划联合四家品牌奶茶，每期一款品牌新品奶茶福利，四期共10000杯，先到先得！一个用户每期均有机会获得一杯奶茶，下一期可再次参与互动。活动期内1人最多可获得4杯奶茶哦！</p>
         <p class="indent-[0em] mb-[.3rem]">2.第一期奖品——梁小糖立冬新品荔浦芋椰粒奶茶，一共2500杯，用户上传至少一条身边的暖心故事，上传成功后，等待审核，后台审核通过后，奶茶券将自动发放至 “我的留言”，请前往查看。（审核时长为1-2个工作日，具体以实际处理进度为准）</p>
         <p class="indent-[0em] mb-[.3rem]">3.上传的内容具体、真实，文字表达清晰，无违法或不当言论，字数建议200字以内，不可少于50字，可搭配10M以内的图片。</p>
@@ -308,7 +304,21 @@
         <p class="indent-[0em] mb-[.3rem]">8.未尽事宜，请联系广西云小助手（微信号：GXYun001）</p>
         <p class="indent-[0em] mb-[.3rem]">*本活动最终解释权归广西云客户端所有。</p>
       </div>
+    </div>
+  </div>
+</div>
 
+<!--我的留言弹窗-->
+<div id="myly-modal" class="fixed inset-0 bg-black/40 z-[1500] touch-none flex flex-col justify-center items-center invisible">
+  <div class="relative w-[9.17rem] touch-none" data-modal-content>
+    <img data-btn="close-myly" data-press src="images/671390.png" class="absolute -top-[.4rem] right-[.28rem] select-none  w-[1.11rem] z-20 cursor-pointer" alt="" draggable="false">
+    <img src="images/1209573.png" class="w-[4.3rem] block mx-auto select-none pointer-events-none absolute top-[1.7rem] left-1/2 -translate-x-1/2" draggable="false" alt="">
+    <img src="images/56123.png" class="w-full block mx-auto select-none pointer-events-none" draggable="false" alt="">
+
+    <div class="absolute inset-0  z-10">
+      <div class="text-[#8F4900] text-[.45rem] h-[8.2rem] overflow-y-auto mt-[1.5rem] ml-[.9rem] mr-[.9rem] ly-list-scrollbar">
+
+      </div>
     </div>
   </div>
 

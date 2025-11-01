@@ -1,4 +1,3 @@
-
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -8,6 +7,10 @@ module.exports = {
     // './list.html'
   ],
   theme: {
+    fontFamily: {
+      'SourceHanSansCN': ['SourceHanSansCN'],
+      'FZZYK': ['FZZYK'],
+    },
     screens: {
       'sm': '640px',
       'md': '768px',
@@ -16,8 +19,8 @@ module.exports = {
       '2xl': '1536px',
     },
     extend: {
-      colors:{
-        primary:'#CD0400',
+      colors: {
+        primary: '#CD0400',
       },
     },
 
@@ -37,7 +40,7 @@ module.exports = {
         '2xl': '1200px',
         '3xl': '2000px',
       },
-    }
+    },
   },
   plugins: [],
 };

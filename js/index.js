@@ -49,7 +49,7 @@ $(window).on('load', function() {
     /** 点击弹出 */
     $(showBtn).on('click', function() {
       const tl = gsap.timeline();
-      tl.from(`${modal} [data-rule-modal-content] `, { scale: .9, duration: 0.4, opacity: 0, ease: 'back.out' });
+      tl.from(`${modal} [data-modal-content] `, { scale: .9, duration: 0.4, opacity: 0, ease: 'back.out' });
       tl.to(modal, { autoAlpha: 1, duration: 0.2 }, '<');
 
     });
@@ -66,6 +66,12 @@ $(window).on('load', function() {
     showBtn: 'button[data-btn="rule"]',
     hideBtn: 'img[data-btn="close-rule"]',
     modal: '#rule-modal',
+  });
+
+  createDialogueAnimate({
+    showBtn: 'button[data-btn="myly"]',
+    hideBtn: 'img[data-btn="close-myly"]',
+    modal: '#myly-modal',
   });
 
 });
