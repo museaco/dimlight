@@ -53,3 +53,5 @@ serviceGetShareSignature({
   imgUrl: 'https://h5.gxrb.com.cn/front/2025/dimlight/images/share.jpg', // 缩略图
   link: window.location.href, //分享链接
 });
+
+console.log(wx)
