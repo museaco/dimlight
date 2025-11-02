@@ -1,11 +1,6 @@
-function setWXConfig(res) {
+function setWXConfig(res, shareData) {
   const WX_APP_ID = 'wxfde72d83dd939a05';
-  const shareData = {
-    title: '广西日报「微光计划」', // 标题
-    desc: '这个冬天，广西日报-广西云联合梁小糖、浅茶、爷爷不泡茶、芋田田共同发起「微光计划」',
-    imgUrl: 'https://material.cloudgx.cn/thumbnail/20251031/dc521b33483f45a78e4e6497889f0082.jpg', // 缩略图
-    link: window.location.href, //分享链接
-  };
+
   if (res.data && res.data.noncestr) {
     wx.config({
       debug: false,
@@ -38,16 +33,21 @@ function setWXConfig(res) {
   }
 }
 
-function serviceGetShareSignature() {
-  var shareurl = window.location.href;
+function serviceGetShareSignature(shareData) {
+  const shareurl = window.location.href;
   $.ajax({
     url: `https://zuul.gxrb.com.cn/api-newtime/getSignature/GetSignature/?shareurl=${encodeURIComponent(
       shareurl,
     )}`,
     success: function success(res) {
-      setWXConfig(res);
+      setWXConfig(res, shareData);
     },
   });
 }
 
-serviceGetShareSignature();
+serviceGetShareSignature({
+  title: '广西日报「微光计划」', // 标题
+  desc: '这个冬天，广西日报-广西云联合梁小糖、浅茶、爷爷不泡茶、芋田田共同发起「微光计划」',
+  imgUrl: 'https://h5.gxrb.com.cn/front/2025/dimlight/images/share.jpg', // 缩略图
+  link: window.location.href, //分享链接
+});
