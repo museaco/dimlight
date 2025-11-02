@@ -70,7 +70,6 @@ $(window).on('load', function() {
       start: 'top 90%',
       end: 'bottom bottom',
       // markers: true,
-
     },
   });
 
@@ -140,21 +139,15 @@ $(window).on('load', function() {
     modal: '#my-coupons-modal',
   });
 
-  function handleCoupons() {
+  $('button[data-coupons-number]').on('click', function(e) {
+    e.preventDefault();
+    const couponsNumber = $(this).data('coupons-number');
 
-    $('button[data-coupons-number]').on('click', function(e) {
-      e.preventDefault();
-      const couponsNumber = $(this).data('coupons-number');
+    hideDialog('#myly-modal', { duration: 0 });
+    $('#coupons-content').text(couponsNumber);
+    showDialog('#my-coupons-modal');
 
-      hideDialog('#myly-modal', { duration: 0 });
-      $('#coupons-content').text(couponsNumber);
-      showDialog('#my-coupons-modal');
-
-    });
-
-  }
-
-  handleCoupons();
+  });
 
   function handleNone() {
 
@@ -184,7 +177,37 @@ $(window).on('load', function() {
 
   }
 
-  handleNone();
+  function handleSubmit() {
+
+    const $el = $(`<div id="submit-modal" class="fixed inset-0 bg-black/40 z-[1500] touch-none flex flex-col justify-center items-center invisible">
+      <div class="relative w-[9.32rem] touch-none" data-modal-content>
+        <img data-btn="close-submit" data-press src="./images/671390.png" class="absolute -top-[.4rem] right-[.28rem] select-none  w-[1.11rem] z-20 cursor-pointer" alt="" draggable="false">
+        <img src="./images/169034.png" class="w-full block mx-auto select-none pointer-events-none" draggable="false" alt="">
+    
+        <div class="absolute inset-0  z-10">
+          <div class="text-[#8F4900] text-[.42rem] h-[4.8rem] overflow-y-auto mt-[2.6rem] ml-[.9rem] mr-[.8rem] ly-list-scrollbar ly-list-scrollbar flex flex-col gap-[.3rem]">
+            <p class="text-[#441d00] text-[.65rem] font-FZZYK leading-[.9rem]">您的暖心故事已提交成功，通过审核后可获得梁小糖立冬新品—<span class="text-[#e27d15]">荔浦芋椰粒奶茶</span> ，可点击
+            <span class="text-[#5ba8b9]">【我的留言】</span> 查看。</p>
+          </div>
+        </div>
+      </div>
+    </div>`);
+
+    $('body').append($el);
+    createDialogueAnimate({
+      showBtn: '',
+      hideBtn: 'img[data-btn="close-submit"]',
+      modal: '#submit-modal',
+      hideComplete: () => {
+        $el.remove();
+      },
+    });
+    showDialog('#submit-modal');
+
+  }
+
+  // handleSubmit();
+  // handleNone();
 
 });
 
