@@ -1,6 +1,8 @@
 window.__auther__ = 'bHVzaGVuZzEwdkAxNjMsY29t';
 gsap.registerPlugin(ScrollTrigger);
 
+const $body = $('body');
+
 function Toast(message = '操作成功') {
 
   $('#toast').remove();
@@ -9,7 +11,7 @@ function Toast(message = '操作成功') {
     <div id="toast" style="
       position: fixed;
       left: 50%;
-      top: 0.8rem;
+      top: 0;
       transform: translateX(-50%);
       background: #8f4900;
       color: #fff;
@@ -25,7 +27,7 @@ function Toast(message = '操作成功') {
     </div>
   `);
 
-  $('body').append($toast);
+  $body.append($toast);
 
   const tl = gsap.timeline({
     onComplete() {
@@ -33,8 +35,8 @@ function Toast(message = '操作成功') {
     },
   });
 
-  tl.to($toast, { autoAlpha: 1, y: 10, duration: 0.3, ease: 'power2.out' })
-    .to($toast, { autoAlpha: 0, y: -20, duration: 0.3, delay: 1.5, ease: 'power2.in' });
+  tl.to($toast, { autoAlpha: 1, y: '1rem', duration: 0.3, ease: 'back.out(1.7)' })
+    .to($toast, { autoAlpha: 0, y: '-1rem', duration: 0.3, delay: 1.5, ease: 'power2.in' });
 }
 
 $(window).on('load', function() {
@@ -164,7 +166,7 @@ $(window).on('load', function() {
       </div>
     </div>`);
 
-    $('body').append($el);
+    $body.append($el);
     createDialogueAnimate({
       showBtn: '',
       hideBtn: 'img[data-btn="close-no-nc"]',
@@ -193,7 +195,7 @@ $(window).on('load', function() {
       </div>
     </div>`);
 
-    $('body').append($el);
+    $body.append($el);
     createDialogueAnimate({
       showBtn: '',
       hideBtn: 'img[data-btn="close-submit"]',
@@ -227,6 +229,35 @@ $(window).on('load', function() {
 
 
   // handleNoneDialog();
+
+  function fetchNewsList() {
+
+    $.ajax({
+      url: `https://apph5.cloudgx.cn/api/content/h5/topic/contentList/page2?contentId=${contentId}&moduleId=8512&current=1&size=20&t=1731405583691`,
+      type: 'GET',
+      contentType: 'application/json',
+      success: function(res) {
+        const records = (res.data || {}).records || [];
+        records.slice(0, 12).forEach(item => {
+          $('.news-wrapper').append(`
+          <a class="flex " data-id="${item.contentId}" target="_blank" href="${articleLink}/${item.contentId}">
+            <div class="w-[4.01rem] h-[2.31rem] shrink-0">
+              <img src="${item.abridgePictures[0].url}" class="w-full h-full object-cover" alt="">
+            </div>
+
+            <div class="flex-1 min-w-0 ml-[.3rem]">
+              <p class="text-[#9E5600] text-[.4rem] nowrap3">${item.title}</p>
+            </div>
+          </a>
+    `);
+        });
+
+      },
+    });
+  }
+
+  fetchNewsList()
+
 
 });
 
