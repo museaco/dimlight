@@ -1,7 +1,4 @@
 function setWXConfig(res, shareData) {
-  console.log({
-    res, shareData,
-  })
   const WX_APP_ID = 'wxfde72d83dd939a05';
 
   if (res.data && res.data.noncestr) {
@@ -25,8 +22,6 @@ function setWXConfig(res, shareData) {
       openTagList: ['wx-open-launch-weapp'],
     });
     wx.ready(() => {
-      console.log('wx ready');
-      console.log(shareData)
       wx.onMenuShareAppMessage(shareData);
       wx.onMenuShareTimeline(shareData);
       wx.onMenuShareQQ(shareData);
