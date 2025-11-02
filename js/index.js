@@ -149,7 +149,7 @@ $(window).on('load', function() {
 
   });
 
-  function handleNone() {
+  function handleNoneDialog() {
 
     const $el = $(`<div id="nonc-modal" class="fixed inset-0 bg-black/40 z-[1500] touch-none flex flex-col justify-center items-center invisible">
       <div class="relative w-[9.17rem] touch-none" data-modal-content>
@@ -177,7 +177,7 @@ $(window).on('load', function() {
 
   }
 
-  function handleSubmit() {
+  function handleSubmitDialog() {
 
     const $el = $(`<div id="submit-modal" class="fixed inset-0 bg-black/40 z-[1500] touch-none flex flex-col justify-center items-center invisible">
       <div class="relative w-[9.32rem] touch-none" data-modal-content>
@@ -206,8 +206,27 @@ $(window).on('load', function() {
 
   }
 
-  // handleSubmit();
-  // handleNone();
+  function handleSubmit() {
+
+    return new Promise(( resolve, reject) => {
+      reject()
+    })
+
+  }
+
+
+  $('button[data-btn="submit"]').on('click', function(e) {
+    e.preventDefault();
+
+    handleSubmit().then(handleSubmitDialog).catch(()=>{
+      Toast('提交失败，请稍后重试');
+    })
+
+  });
+
+
+
+  // handleNoneDialog();
 
 });
 
