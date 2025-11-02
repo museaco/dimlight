@@ -44,6 +44,7 @@ $(window).on('load', function() {
   const isClient = browser.versions.gxrb;
 
   console.log(browser)
+  console.log(browser.versions.gxrb)
   if (isClient) {
 
     $('#upload-btn')
