@@ -41,7 +41,7 @@ function Toast(message = '操作成功') {
 
 $(window).on('load', function() {
   $('#page-loading').remove();
-  const isClient = browser.gxrb;
+  const isClient = browser.versions.gxrb;
 
   console.log(browser)
   if (isClient) {
