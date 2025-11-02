@@ -149,7 +149,6 @@ $(window).on('load', function() {
       hideDialog('#myly-modal', { duration: 0 });
       $('#coupons-content').text(couponsNumber);
       showDialog('#my-coupons-modal');
-      console.log(couponsNumber);
 
     });
 
