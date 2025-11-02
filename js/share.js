@@ -1,4 +1,7 @@
 function setWXConfig(res, shareData) {
+  console.log({
+    res, shareData,
+  })
   const WX_APP_ID = 'wxfde72d83dd939a05';
 
   if (res.data && res.data.noncestr) {
@@ -41,7 +44,7 @@ function serviceGetShareSignature(shareData) {
     url: `https://zuul.gxrb.com.cn/api-newtime/getSignature/GetSignature/?shareurl=${encodeURIComponent(
       shareurl,
     )}`,
-    success: function success(res) {
+    success: function (res) {
       setWXConfig(res, shareData);
     },
   });
