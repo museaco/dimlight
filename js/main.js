@@ -15,9 +15,9 @@ function Toast(message = '操作成功') {
       transform: translateX(-50%);
       background: #8f4900;
       color: #fff;
-      padding: 10px 20px;
-      border-radius: 6px;
-      font-size: 14px;
+      padding: .1rem .2rem;
+      border-radius: .06rem;
+      font-size: .25rem;
       opacity: 0;
       pointer-events: none;
       z-index: 9999;
