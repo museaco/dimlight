@@ -34,7 +34,6 @@ $(window).on('load', function() {
     }).from(section, { opacity: 0, y: '2rem', duration: 1 });
   });
 
-
   const fl_tl = gsap.timeline({
     scrollTrigger: {
       trigger: '#fl-section',
@@ -53,24 +52,34 @@ $(window).on('load', function() {
   fl_tl.from('img[data-fl="03"]', { opacity: 0, x: '-0.8rem' });
   fl_tl.from('div[data-fl="05"]', { opacity: 0, x: '0.8rem' }, '<');
 
+  function showDialog(modalId) {
+    const tl = gsap.timeline();
+    tl.from(`${modalId} [data-modal-content] `, { scale: .9, duration: 0.4, opacity: 0, ease: 'back.out' });
+    tl.to(modalId, { autoAlpha: 1, duration: 0.2 }, '<');
+  }
+
+  function hideDialog(modalId, config = { duration: 0.3 }) {
+    gsap.to(modalId, { autoAlpha: 0, duration: config.duration });
+  }
+
   function createDialogueAnimate({
     showBtn,
     hideBtn,
     modal,
   }) {
     /** 点击弹出 */
-    $(showBtn).on('click', function() {
-      const tl = gsap.timeline();
-      tl.from(`${modal} [data-modal-content] `, { scale: .9, duration: 0.4, opacity: 0, ease: 'back.out' });
-      tl.to(modal, { autoAlpha: 1, duration: 0.2 }, '<');
-
-    });
+    if (showBtn) {
+      $(showBtn).on('click', function() {
+        showDialog(modal);
+      });
+    }
 
     /** 点击关闭*/
-    $(hideBtn).on('click', function() {
-
-      gsap.to(modal, { autoAlpha: 0, duration: 0.3 });
-    });
+    if (hideBtn) {
+      $(hideBtn).on('click', function() {
+        hideDialog(modal);
+      });
+    }
 
   }
 
@@ -86,6 +95,27 @@ $(window).on('load', function() {
     modal: '#myly-modal',
   });
 
+  createDialogueAnimate({
+    showBtn: '',
+    hideBtn: 'img[data-btn="close-my-coupons"]',
+    modal: '#my-coupons-modal',
+  });
+
+  function handleCoupons() {
+
+    $('button[data-coupons-number]').on('click', function(e) {
+      e.preventDefault();
+      const couponsNumber = $(this).data('coupons-number');
+
+      hideDialog('#myly-modal',{duration: 0});
+      showDialog('#my-coupons-modal');
+      console.log(couponsNumber);
+
+    });
+
+  }
+
+  handleCoupons();
 });
 
 

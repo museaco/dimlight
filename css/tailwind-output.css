@@ -693,6 +693,10 @@ button[data-press]:active, img[data-press]:active {
   top: 0px;
 }
 
+.top-\[\.025rem\] {
+  top: .025rem;
+}
+
 .top-\[\.05rem\] {
   top: .05rem;
 }
@@ -711,10 +715,6 @@ button[data-press]:active, img[data-press]:active {
 
 .top-\[4\.2rem\] {
   top: 4.2rem;
-}
-
-.top-\[\.025rem\] {
-  top: .025rem;
 }
 
 .z-10 {
