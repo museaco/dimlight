@@ -721,6 +721,14 @@ button[data-press]:active, img[data-press]:active {
   top: 4.2rem;
 }
 
+.right-0 {
+  right: 0px;
+}
+
+.right-\[2rem\] {
+  right: 2rem;
+}
+
 .z-10 {
   z-index: 10;
 }
@@ -1037,6 +1045,30 @@ button[data-press]:active, img[data-press]:active {
 
 .w-\[9\.32rem\] {
   width: 9.32rem;
+}
+
+.w-\[\] {
+  width: ;
+}
+
+.w-\[5\.67rem\] {
+  width: 5.67rem;
+}
+
+.w-\[\.83rem\] {
+  width: .83rem;
+}
+
+.w-\[1rem\] {
+  width: 1rem;
+}
+
+.w-\[\.93rem\] {
+  width: .93rem;
+}
+
+.w-\[6rem\] {
+  width: 6rem;
 }
 
 .min-w-0 {

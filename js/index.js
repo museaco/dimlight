@@ -41,6 +41,25 @@ function Toast(message = '操作成功') {
 
 $(window).on('load', function() {
   $('#page-loading').remove();
+  const isClient = browser.gxrb;
+
+  if (isClient) {
+
+    $('#upload-btn')
+      .append(`<input accept="image/heic,image/jpeg,image/jpg" type="file" class="absolute inset-0 z-10 border-none outline-none opacity-0 cursor-pointer" draggable="false" />`);
+
+    createDialogueAnimate({
+      showBtn: 'button[data-btn="myly"]',
+      hideBtn: 'img[data-btn="close-myly"]',
+      modal: '#myly-modal',
+    });
+
+  } else {
+    $('#ly-input').addClass('needApp');
+    $('#upload-btn').addClass('needApp');
+    $('button[data-btn="submit"]').addClass('needApp');
+    $('button[data-btn="myly"]').addClass('needApp');
+  }
 
   const clipboard = new ClipboardJS('.copy-btn');
   clipboard.on('success', function(e) {
@@ -130,9 +149,9 @@ $(window).on('load', function() {
   });
 
   createDialogueAnimate({
-    showBtn: 'button[data-btn="myly"]',
-    hideBtn: 'img[data-btn="close-myly"]',
-    modal: '#myly-modal',
+    showBtn: '',
+    hideBtn: 'img[data-btn="close-needApp-modal"]',
+    modal: '#needApp-modal',
   });
 
   createDialogueAnimate({
@@ -218,6 +237,9 @@ $(window).on('load', function() {
 
   $('button[data-btn="submit"]').on('click', function(e) {
     e.preventDefault();
+    if (!isClient) {
+      return;
+    }
 
     handleSubmit().then(handleSubmitDialog).catch(() => {
       Toast('提交失败，请稍后重试');
@@ -256,8 +278,34 @@ $(window).on('load', function() {
   fetchNewsList();
 
   // 点击跳转广西云
-  $('body').on('click', '.needApp', function() {
+  $body.on('click', '.needApp', function(e) {
 
+    e.preventDefault();
+    e.stopPropagation();
+    const $el = $(`<div id="needApp-modal" class="fixed inset-0 bg-black/40 z-[1500] touch-none flex flex-col justify-center items-center invisible">
+      <div class="relative w-[9.9rem] touch-none" data-modal-content>
+          <img src="./images/close.png" class="w-[.93rem] absolute right-[2rem] top-0" data-btn="close-needApp-modal" alt="">
+          <div class="w-[6rem] mx-auto">
+            <img class="w-full" id="gotoApp" src="./images/needApp.png" alt="">
+          </div>
+        </div>
+      </div>`);
+
+    $body.append($el);
+    createDialogueAnimate({
+      showBtn: '',
+      hideBtn: 'img[data-btn="close-needApp-modal"]',
+      modal: '#needApp-modal',
+      hideComplete: () => {
+        $el.remove();
+      },
+    });
+
+    showDialog('#needApp-modal');
+
+  });
+
+  $body.on('click', '#gotoApp', function() {
     const contentType = 12;
     const link = 'https://apph5.cloudgx.cn/topic/b5da5cc74c5e4e4cae336cf32eb01215';
 
