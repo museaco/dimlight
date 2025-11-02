@@ -22,6 +22,8 @@ function setWXConfig(res, shareData) {
       openTagList: ['wx-open-launch-weapp'],
     });
     wx.ready(() => {
+      console.log('wx ready');
+      console.log(shareData)
       wx.onMenuShareAppMessage(shareData);
       wx.onMenuShareTimeline(shareData);
       wx.onMenuShareQQ(shareData);
