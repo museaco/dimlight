@@ -40,7 +40,7 @@ function serviceGetShareSignature(shareData) {
       shareurl,
     )}`,
     success: function (res) {
-      console.log('xxx')
+      console.log('GetSignature success')
       setWXConfig(res, shareData);
     },
     error: function (err) {
@@ -56,4 +56,3 @@ serviceGetShareSignature({
   link: window.location.href, //分享链接
 });
 
-console.log(wx)
