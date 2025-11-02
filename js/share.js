@@ -45,8 +45,12 @@ function serviceGetShareSignature(shareData) {
       shareurl,
     )}`,
     success: function (res) {
+      console.log('xxx')
       setWXConfig(res, shareData);
     },
+    error: function (err) {
+      console.error('获取微信签名失败', err);
+    }
   });
 }
 
