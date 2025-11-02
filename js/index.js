@@ -52,19 +52,6 @@ $(window).on('load', function() {
     stagger: 0.25,
   });
 
-  // const dy_tl = gsap.timeline({
-  //   scrollTrigger: {
-  //     trigger: '#dy-section',
-  //     scrub: true,
-  //     start: 'top bottom',
-  //     end: 'bottom bottom',
-  //     // markers: true,
-  //     toggleActions: 'play none none reverse',
-  //   },
-  // });
-  //
-  // dy_tl.from('#dy-section', { opacity: 0, y: '1.8rem', duration: 1 });
-
   gsap.utils.toArray(['.from-y-show']).forEach(section => {
     gsap.timeline({
       scrollTrigger: {
@@ -100,14 +87,24 @@ $(window).on('load', function() {
     tl.to(modalId, { autoAlpha: 1, duration: 0.2 }, '<');
   }
 
-  function hideDialog(modalId, config = { duration: 0.3 }) {
-    gsap.to(modalId, { autoAlpha: 0, duration: config.duration });
+  function hideDialog(modalId, config = {}) {
+
+    gsap.to(modalId, {
+      autoAlpha: 0,
+      duration: config.duration || 0.2,
+      onComplete() {
+        if (config.hideComplete) {
+          config.hideComplete();
+        }
+      },
+    });
   }
 
   function createDialogueAnimate({
     showBtn,
     hideBtn,
     modal,
+    hideComplete,
   }) {
     /** 点击弹出 */
     if (showBtn) {
@@ -116,10 +113,10 @@ $(window).on('load', function() {
       });
     }
 
-    /** 点击关闭*/
+    /** 点击关闭 */
     if (hideBtn) {
       $(hideBtn).on('click', function() {
-        hideDialog(modal);
+        hideDialog(modal, { hideComplete });
       });
     }
 
@@ -159,6 +156,37 @@ $(window).on('load', function() {
   }
 
   handleCoupons();
+
+  function handleNone() {
+
+    const $el = $(`<div id="nonc-modal" class="fixed inset-0 bg-black/40 z-[1500] touch-none flex flex-col justify-center items-center invisible">
+      <div class="relative w-[9.17rem] touch-none" data-modal-content>
+        <img data-btn="close-no-nc" data-press src="./images/671390.png" class="absolute -top-[.4rem] right-[.28rem] select-none  w-[1.11rem] z-20 cursor-pointer" alt="" draggable="false">
+        <img src="./images/169034.png" class="w-full block mx-auto select-none pointer-events-none" draggable="false" alt="">
+    
+        <div class="absolute inset-0  z-10">
+          <div class="text-[#8F4900] text-[.42rem] h-[4.3rem] overflow-y-auto mt-[3.5rem] ml-[.9rem] mr-[.9rem] ly-list-scrollbar ly-list-scrollbar flex flex-col gap-[.3rem]">
+            <p class="text-[#441d00] text-[.65rem] font-FZZYK">本期奶茶已抢光，每期限定<span class="text-[#e27d15]">2500</span>杯先到先得，下一期再来吧！</p>
+          </div>
+        </div>
+      </div>
+    </div>`);
+
+    $('body').append($el);
+    createDialogueAnimate({
+      showBtn: '',
+      hideBtn: 'img[data-btn="close-no-nc"]',
+      modal: '#nonc-modal',
+      hideComplete: () => {
+        $el.remove();
+      },
+    });
+    showDialog('#nonc-modal');
+
+  }
+
+  handleNone();
+
 });
 
 
