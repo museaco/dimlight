@@ -25,6 +25,7 @@
   <script defer src="js/lib/jquery.js"></script>
   <script defer src="./js/lib/gsap.min.js"></script>
   <script defer src="./js/lib/ScrollTrigger.min.js"></script>
+  <script defer src="./js/lib/clipboard.min.js"></script>
   <script defer src="./js/index.js"></script>
 
 
@@ -352,9 +353,9 @@
     <img data-btn="close-my-coupons" data-press src="./images/671390.png" class="absolute -top-[.4rem] right-[.28rem] select-none  w-[1.11rem] z-20 cursor-pointer" alt="" draggable="false">
     <img src="./images/1702582.png" class="w-[4.44rem] block mx-auto select-none pointer-events-none absolute top-[1.7rem] left-1/2 -translate-x-1/2" draggable="false" alt="">
 
-    <div class="absolute top-[3rem] left-1/2 -translate-x-1/2" id="coupons-content">
-      <div class=" text-[#8F4900] text-[.45rem] text-[c66500] bg-[length:100%_100%] bg-center bg-no-repeat font-FZZYK w-fit px-[.38rem]" style="background-image: url('./images/8510293.png')">
-        <span class="relative top-[.05rem] whitespace-nowrap">奶茶券码：1025477612592545</span>
+    <div class="absolute top-[3rem] left-1/2 -translate-x-1/2 z-20">
+      <div data-clipboard-target="#coupons-content" class="copy-btn text-[#8F4900] text-[.45rem] text-[c66500] bg-[length:100%_100%] bg-center bg-no-repeat font-FZZYK w-fit px-[.38rem]" style="background-image: url('./images/8510293.png')">
+        <span class="relative top-[.05rem] whitespace-nowrap">奶茶券码：<span   id="coupons-content"></span></span>
       </div>
     </div>
 

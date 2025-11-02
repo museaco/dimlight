@@ -1,8 +1,50 @@
 window.__auther__ = 'bHVzaGVuZzEwdkAxNjMsY29t';
 gsap.registerPlugin(ScrollTrigger);
 
+function Toast(message = '操作成功') {
+
+  $('#toast').remove();
+
+  const $toast = $(`
+    <div id="toast" style="
+      position: fixed;
+      left: 50%;
+      top: 0.8rem;
+      transform: translateX(-50%);
+      background: #8f4900;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-size: 14px;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 9999;
+      font-family: 'FZZYK', system-ui;
+    ">
+      ${message}
+    </div>
+  `);
+
+  $('body').append($toast);
+
+  const tl = gsap.timeline({
+    onComplete() {
+      $toast.remove();
+    },
+  });
+
+  tl.to($toast, { autoAlpha: 1, y: 10, duration: 0.3, ease: 'power2.out' })
+    .to($toast, { autoAlpha: 0, y: -20, duration: 0.3, delay: 1.5, ease: 'power2.in' });
+}
+
 $(window).on('load', function() {
   $('#page-loading').remove();
+
+  const clipboard = new ClipboardJS('.copy-btn');
+  clipboard.on('success', function(e) {
+    Toast('复制成功');
+    e.clearSelection();
+  });
 
   gsap.from('img[data-img-y-show]', {
     y: 20,
@@ -107,7 +149,8 @@ $(window).on('load', function() {
       e.preventDefault();
       const couponsNumber = $(this).data('coupons-number');
 
-      hideDialog('#myly-modal',{duration: 0});
+      hideDialog('#myly-modal', { duration: 0 });
+      $('#coupons-content').text(couponsNumber);
       showDialog('#my-coupons-modal');
       console.log(couponsNumber);
 
