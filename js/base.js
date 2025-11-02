@@ -1,4 +1,4 @@
-const url = 'https://apph5.cloudgx.cn/';
+const baseUrl = 'https://apph5.cloudgx.cn/';
 const articleLink = `https://apph5.cloudgx.cn/article`;
 // const contentId = "0e8e28613e774ae2b243b4fc0a0f5626";
 const contentId = '71e2916fa3f4467782c640db2ebf0947';

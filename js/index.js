@@ -15,9 +15,9 @@ function Toast(message = '操作成功') {
       transform: translateX(-50%);
       background: #8f4900;
       color: #fff;
-      padding: .1rem .2rem;
-      border-radius: .06rem;
-      font-size: .25rem;
+      padding: .2rem .35rem;
+      border-radius: .2rem;
+      font-size: .40rem;
       opacity: 0;
       pointer-events: none;
       z-index: 9999;
@@ -210,23 +210,20 @@ $(window).on('load', function() {
 
   function handleSubmit() {
 
-    return new Promise(( resolve, reject) => {
-      reject()
-    })
+    return new Promise((resolve, reject) => {
+      reject();
+    });
 
   }
-
 
   $('button[data-btn="submit"]').on('click', function(e) {
     e.preventDefault();
 
-    handleSubmit().then(handleSubmitDialog).catch(()=>{
+    handleSubmit().then(handleSubmitDialog).catch(() => {
       Toast('提交失败，请稍后重试');
-    })
+    });
 
   });
-
-
 
   // handleNoneDialog();
 
@@ -256,8 +253,22 @@ $(window).on('load', function() {
     });
   }
 
-  fetchNewsList()
+  fetchNewsList();
 
+  // 点击跳转广西云
+  $('body').on('click', '.needApp', function() {
+
+    const contentType = 12;
+    const link = 'https://apph5.cloudgx.cn/topic/b5da5cc74c5e4e4cae336cf32eb01215';
+
+    const data = { contentId, contentType, link };
+    location.href = `gxrbapp://content?contentId=${encodeURIComponent(contentId)}&contentType=${encodeURIComponent(contentType)}&link=${encodeURIComponent(
+      link)}&params=${encodeURIComponent(JSON.stringify(data))}`;
+
+    setTimeout(() => {
+      window.location.href = 'https://apph5.cloudgx.cn/download';
+    }, 500);
+  });
 
 });
 

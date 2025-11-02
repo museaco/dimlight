@@ -1,6 +1,6 @@
 function setWXConfig(res) {
-  var WX_APP_ID = 'wxfde72d83dd939a05';
-  var shareData = {
+  const WX_APP_ID = 'wxfde72d83dd939a05';
+  const shareData = {
     title: '广西日报「微光计划」', // 标题
     desc: '这个冬天，广西日报-广西云联合梁小糖、浅茶、爷爷不泡茶、芋田田共同发起「微光计划」',
     imgUrl: 'https://material.cloudgx.cn/thumbnail/20251031/dc521b33483f45a78e4e6497889f0082.jpg', // 缩略图
