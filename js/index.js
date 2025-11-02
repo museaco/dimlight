@@ -43,6 +43,7 @@ $(window).on('load', function() {
   $('#page-loading').remove();
   const isClient = browser.gxrb;
 
+  console.log(browser)
   if (isClient) {
 
     $('#upload-btn')
