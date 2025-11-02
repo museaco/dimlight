@@ -1071,6 +1071,10 @@ button[data-press]:active, img[data-press]:active {
   width: 6rem;
 }
 
+.w-\[3rem\] {
+  width: 3rem;
+}
+
 .min-w-0 {
   min-width: 0px;
 }

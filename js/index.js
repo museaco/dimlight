@@ -54,11 +54,21 @@ $(window).on('load', function() {
       modal: '#myly-modal',
     });
 
+    $('#textarea-wrap').append(`
+     <label>
+              <textarea placeholder="" class="text-[#6d3f3f] image-placeholder outline-none h-full resize-none w-full bg-transparent border-none text-[.46rem] p-0 m-0"></textarea>
+            </label>
+    `);
+
   } else {
-    $('#ly-input').addClass('needApp');
+
     $('#upload-btn').addClass('needApp');
     $('button[data-btn="submit"]').addClass('needApp');
     $('button[data-btn="myly"]').addClass('needApp');
+
+    $('#textarea-wrap').append(`
+    <img src="./images/ly/placeholder.png" alt="" class="w-[3rem] block select-none pointer-events-none" draggable="false">
+    `).addClass('needApp');
   }
 
   const clipboard = new ClipboardJS('.copy-btn');
