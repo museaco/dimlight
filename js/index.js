@@ -92,7 +92,7 @@ function toast_with_mask(message = '操作成功') {
     gsap.to($toast, {
       autoAlpha: 0,
       scale: 0,
-      duration: 0.3,
+      duration: 0,
       ease: 'power2.in',
       onComplete() {
         $toast.remove();
@@ -111,6 +111,8 @@ $(window).on('load', function() {
   //     )
   //     .addClass('show');
   // });
+
+  // 初始化swiper
 
   $('#page-loading').remove();
   // const isClient = browser.versions.gxrb;
@@ -136,7 +138,66 @@ $(window).on('load', function() {
       type: 'GET',
       success: function(data) {
         if (data.code === 0) {
-
+          const comments = data.data.list;
+          if (comments.length === 0) {
+            showMore = false;
+            if (page === 1) {
+              $('.comments').hide();
+              return;
+            }
+          }
+          $('.comments').show();
+          let html = '';
+          comments.forEach((comment) => {
+            html += `<li class="comment">
+              <img src="${
+              comment.avatar ||
+              'https://avatar.gxnews.com.cn/avatar/000/62/07/45_avatar_middle.jpg'
+            }" class="comment-avatar" />
+              <div class="comment-content">
+                <div class="comment-author">${
+              comment.audit_user_name || '游客'
+            }</div>
+                <div class="comment-text">${comment.content}</div>
+                <div class="comment-imgs">
+                `;
+            var images = JSON.parse(comment.images);
+            var videos = JSON.parse(comment.videos);
+            if (videos.length > 0) {
+              videos.forEach((video) => {
+                const posterUrl = video.split('?')[0] + '.jpg';
+                html += `<video
+                        src="${video}"
+                        controls
+                        poster="${posterUrl}"
+                        webkit-playsinline="isiPhoneShowPlaysinline"
+                        playsinline="isiPhoneShowPlaysinline"
+                        preload="auto"
+                        ></video>`;
+              });
+            }
+            if (images.length > 0) {
+              html += '<div class="comment-img-list">';
+              images.forEach((img) => {
+                html += `<img src="${img}" />`;
+              });
+              html += '</div>';
+            }
+            html += `</div>
+              </div>
+            </li>`;
+          });
+          // setTimeout(() => {
+          //   handleVideoFullscreen();
+          // }, 500);
+          if (page === 1) {
+            $('.comment-list').html(html);
+            if (data.data.total_size < 21) {
+              $('.comment-more').hide();
+            }
+          } else {
+            $('.comment-list').append(html);
+          }
         } else {
           console.error('Error:', data.message);
         }
@@ -598,6 +659,53 @@ $(window).on('load', function() {
       }
     }
   });
+
+// 初始化 Swiper 变量，避免每次点击都重新创建
+  let commentSwiper = null;
+
+// 点击评论图片查看大图
+  $('.comments').on('click', '.comment-img-list img', function() {
+    const $list = $(this).closest('.comment-img-list');
+    const $imgs = $list.find('img');
+    const $swiperWrapper = $('.swiper-comments .swiper-wrapper');
+
+    // 1. 使用 map 生成 HTML，减少多次 DOM 操作
+    const slidesHTML = $imgs
+      .map((i, el) => `<div class="swiper-slide"><img data-src="${$(el).attr('src')}" class="swiper-lazy" /></div>`)
+      .get()
+      .join('');
+
+    $swiperWrapper.html(slidesHTML);
+
+    // 2. 若 swiper 已存在则销毁，防止重复初始化
+    if (commentSwiper) {
+      commentSwiper.destroy(true, true);
+    }
+
+    // 3. 初始化 Swiper
+    commentSwiper = new Swiper('.swiper-comments', {
+      initialSlide: $(this).index(),
+      lazy: {
+        loadPrevNext: true,
+        loadOnTransitionStart: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+
+    // 4. 显示大图层
+    $('.fixed-box-3').fadeIn(150);
+    $('body').addClass('no-scroll'); // 用 class 替代直接修改 CSS
+  });
+
+// 关闭大图查看
+  $('.fixed-box-3-close').on('click', function() {
+    $('.fixed-box-3').fadeOut(150);
+    $('body').removeClass('no-scroll');
+  });
+
 });
 
 

@@ -31,6 +31,7 @@
   <link rel="preload" as="image" href="./images/needApp.png">
   <link rel="preload" as="image" href="./images/close.png">
 
+  <link href="./css/swiper-bundle.min.css" rel="stylesheet">
   <link href="./css/tailwind-output.css" rel="stylesheet">
   <link href="./css/index.css" rel="stylesheet">
 
@@ -38,6 +39,7 @@
   <script defer src="https://bookingmaster.gxrb.com.cn/front/test/js/gxrbBridge.js"></script>
   <script defer src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js?t=1749089751105"></script>
   <script defer src="js/lib/jquery.js"></script>
+  <script defer src="js/lib/swiper-bundle.min.js"></script>
   <script defer src="./js/lib/gsap.min.js"></script>
   <script defer src="./js/lib/ScrollTrigger.min.js"></script>
   <script defer src="./js/lib/clipboard.min.js"></script>
@@ -219,6 +221,13 @@
 
           <div class="mt-[.29rem] mx-auto w-[10.32rem] h-[14.64rem] bg-no-repeat bg-[length:100%_100%] bg-center" style="background-image: url('./images/lylb/6434.png');">
 
+            <div class=" h-[14.6rem] pt-[2rem] pl-[.9rem] pr-[.6rem] pb-[.6rem] flex flex-col">
+              <div class=" comments  h-full overflow-y-auto ly-list-scrollbar flex-1 min-h-0">
+                <div class="mr-[.3rem] comment-list">
+
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -341,7 +350,30 @@
   </div>
 
 </div>
-
+<!-- 图片大图轮播 -->
+<div class="fixed-box-3">
+  <div class="fixed-box-3-close"></div>
+  <div class="fixed-main">
+    <div class="swiper swiper-comments">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img
+            src="https://static.gxrb.com.cn/front_app_data/image/uploadpic/20250515/4aedaa3096be7fbbbdafdc62ecc0429e.png?t=1751333506718"
+            alt=""
+          />
+        </div>
+        <div class="swiper-slide">
+          <img
+            src="https://avatar.gxnews.com.cn/avatar/000/62/07/45_avatar_middle.jpg?t=1751333506718"
+            alt=""
+          />
+        </div>
+      </div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+  </div>
+</div>
 <script src="./js/lib/eruda.js"></script>
 <script>
   eruda.init();

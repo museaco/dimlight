@@ -55,12 +55,12 @@ html {
 }
 
 .ly-list-scrollbar::-webkit-scrollbar-thumb {
-  background: RGB(239,184,127);
+  background: RGB(239, 184, 127);
   border-radius: 1.8rem;
 }
 
 .ly-list-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: RGB(239,184,127);
+  background: RGB(239, 184, 127);
 }
 
 .ly-list-scrollbar::-webkit-scrollbar-track {
@@ -87,6 +87,9 @@ html {
   border-radius: 0px;
 }
 
+.no-scroll{
+  overflow-y: hidden;
+}
 
 .preview-list {
   overflow-x: auto;
@@ -135,4 +138,139 @@ html {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex
+}
+
+
+.comment-list {
+  font-size: .26rem;
+}
+
+.comment-list li.comment {
+  display: flex;
+  margin-bottom: .5rem;
+  align-items: flex-start;
+
+}
+
+.comment-list .comment-avatar {
+  width: 1.2rem;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.comment-list .comment-content {
+  flex: 1;
+  min-width: 0;
+  padding-left: .2rem;
+  padding-top: .05rem;
+
+}
+
+.comment-list .comment-author {
+  color: #686868;
+  margin-bottom: .05rem;
+  font-size: .4rem;
+}
+
+.comment-list .comment-text {
+  color: #2d2828;
+  font-size: .46rem;
+}
+
+.comment-list .like {
+  font-size: .26rem;
+  color: #2d2828
+}
+
+.comment-list .like::before {
+  content: "";
+  display: inline-block;
+  vertical-align: -.02rem;
+  margin-left: .11rem;
+  margin-right: .04rem
+}
+
+.comment-list .comment-imgs {
+  margin-top: .18rem
+}
+
+.comment-list video {
+  width: 100%;
+  height: 3.08rem;
+  border-radius: .15rem;
+  background-color: rgba(0, 0, 0, .7);
+  display: block;
+  margin-bottom: .2rem
+}
+
+.comment-list .comment-img-list{
+  display: flex;
+  gap: .15rem;
+  flex-wrap: wrap;
+}
+.comment-list .comment-img-list img {
+
+  width: 2rem;
+  height: 2rem;
+  border-radius: .1rem;
+  font-size: 0;
+  display: block;
+  margin: 0;
+  object-fit: cover
+}
+
+.comment-list .comment-img-list img:nth-child(3n) {
+
+}
+
+.comment-more {
+  margin-top: .3rem;
+  text-align: right;
+  font-size: .24rem;
+  color: #c62c1e
+}
+
+
+
+.fixed-box-3 {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 6666;
+  background-color: rgba(0, 0, 0, .5);
+  display: none
+}
+
+.fixed-box-3 .fixed-box-3-close {
+  position: fixed;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1rem;
+  height: 1rem;
+  background-image: url(../images/close.png?t=1761015570455);
+  background-repeat: no-repeat;
+  background-position: center center;
+  z-index: 6669;
+
+
+}
+
+.swiper-comments {
+  height: 100vh;
+  --swiper-theme-color: #fff;
+  --swiper-navigation-size: 0.6rem
+}
+
+.swiper-comments .swiper-slide {
+  line-height: 100vh;
+  text-align: center
+}
+
+.swiper-comments .swiper-slide img {
+  height: 100%;
+  object-fit: contain
 }
