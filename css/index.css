@@ -254,6 +254,7 @@ html {
   background-image: url(../images/close.png?t=1761015570455);
   background-repeat: no-repeat;
   background-position: center center;
+  background-size: contain;
   z-index: 6669;
 
 
