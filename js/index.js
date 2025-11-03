@@ -142,7 +142,7 @@ $(window).on('load', function() {
 
     $('#textarea-wrap').append(`
      <label>
-      <textarea placeholder="" class="msg-text text-[#6d3f3f] image-placeholder outline-none h-full resize-none w-full bg-transparent border-none text-[.46rem] p-0 m-0"></textarea>
+      <textarea placeholder="请输入评论..." class="msg-text text-[#6d3f3f] outline-none h-full resize-none w-full bg-transparent border-none text-[.46rem] p-0 m-0"></textarea>
     </label>
     `);
 
