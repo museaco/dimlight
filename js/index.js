@@ -122,10 +122,32 @@ $(window).on('load', function() {
     return t;
   }
 
-  function getComments (){
+  // 获取评论列表
+  function fetchComments() {
+    const params = new URLSearchParams();
+    params.append('page', page);
+    params.append('tenant_id', '114');
+    params.append('status', '1');
+    params.append('actyid', actyid);
+    params.append('size', '20');
 
+    $.ajax({
+      url: `https://zuul.gxrb.com.cn/api-newtime/pub/activityComment/list?${params}`,
+      type: 'GET',
+      success: function(data) {
+        if (data.code === 0) {
+
+        } else {
+          console.error('Error:', data.message);
+        }
+      },
+      error: function(xhr, status, error) {
+        console.error('Error:', error);
+      },
+    });
   }
 
+  fetchComments();
   console.log(browser);
   console.log(browser.versions.gxrb);
   if (isClient) {
@@ -350,7 +372,7 @@ $(window).on('load', function() {
         formData.append(i, data[i]);
       }
 
-      toast_with_mask('正在提交...');
+      const close_toast = toast_with_mask('正在提交...');
       $.ajax({
         url: `https://zuul.gxrb.com.cn/api-newtime/pub/activityComment/add`,
         type: 'POST',
@@ -359,7 +381,7 @@ $(window).on('load', function() {
         contentType: false,
         success: function(res) {
           if (res.data.accommentid) {
-            resolve()
+            resolve();
             $('.msg-text').val('');
             imgList = [];
             videoList = [];
@@ -367,15 +389,18 @@ $(window).on('load', function() {
             // $("body").removeClass("listActive");
             page = 1;
             // getToken();
-            getComments();
+            fetchComments();
           } else {
-            reject('网络错误，请稍后重试')
+            reject('网络错误，请稍后重试');
 
           }
           console.log(res);
         },
         error: function() {
-          reject('网络错误，请稍后重试')
+          reject('网络错误，请稍后重试');
+        },
+        complete: function(xhr, status) {
+          close_toast();
         },
       });
 
@@ -538,16 +563,15 @@ $(window).on('load', function() {
         } else {
           toast(response.msg || '图片上传失败，请稍后重试');
         }
-        // 清空input
-        // $('#upload-img').val('');
+
       },
       error: function() {
         toast('网络错误，请稍后重试');
-        // 上传完成清空input
-        // $('#upload-img').val('');
       },
       complete: function(xhr, status) {
         close_toast();
+        // 清空input
+        $('#upload-img').val('');
       },
     });
   });
