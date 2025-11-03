@@ -103,16 +103,17 @@ function toast_with_mask(message = '操作成功') {
 
 $(window).on('load', function() {
 
-gsap.to('[data-scale-anim]',{
-  scale: 1.15,          // 放大到 1.2 倍
-  duration: 1,       // 动画时长 0.6 秒
-  yoyo: true,          // 返回原状态（缩小回来）
-  repeat: -1,           // 重复 1 次（即来回一次）
-  ease: 'power1.inOut' // 缓动曲线
-})
+  gsap.to('[data-scale-anim]', {
+    scale: 1.15,
+    duration: 1,
+    yoyo: true,
+    repeat: -1,
+    ease: 'power1.inOut',
+  });
 
   $('#page-loading').remove();
   const isClient = browser.versions.gxrb;
+
   // const isClient = true;
 
   function get_cloudgx_signstr() {
@@ -703,25 +704,24 @@ gsap.to('[data-scale-anim]',{
     $('body').removeClass('no-scroll');
   });
 
-
-  function fetchInfo(){
+  function fetchInfo() {
     $.ajax({
-      type: "post",
-      url: "https://vote3.gxnews.com.cn/Api/Wgjh/index/getInfo",
+      type: 'post',
+      url: 'https://vote3.gxnews.com.cn/Api/Wgjh/index/getInfo',
       data: {
         cloudgx_signstr: get_cloudgx_signstr(),
 
       },
-      dataType: "dataType",
-      success: function (response) {
+      dataType: 'dataType',
+      success: function(response) {
         const res = JSON.parse(response);
-        console.log(res)
+        console.log(res);
 
       },
     });
   }
 
-  fetchInfo()
+  fetchInfo();
 
 });
 
