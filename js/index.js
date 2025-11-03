@@ -103,16 +103,22 @@ function toast_with_mask(message = '操作成功') {
 
 $(window).on('load', function() {
 
-
+gsap.to('[data-scale-anim]',{
+  scale: 1.15,          // 放大到 1.2 倍
+  duration: 1,       // 动画时长 0.6 秒
+  yoyo: true,          // 返回原状态（缩小回来）
+  repeat: -1,           // 重复 1 次（即来回一次）
+  ease: 'power1.inOut' // 缓动曲线
+})
 
   $('#page-loading').remove();
-  const isClient = browser.versions.gxrb;
-  // const isClient = true;
+  // const isClient = browser.versions.gxrb;
+  const isClient = true;
 
   function get_cloudgx_signstr() {
-    return getAppMultiUserInfo(1).trim().replace(/\n/g, '');
-    // const t = 'YWki++v23SWNgkrFc92bsTCzVrASKRhAp+JenIGtQy9BygJk9IXONH/ga/M/CuhdCyUql4FZTQrqoNuCpqupwo/Vy7gazPdQc4RmBjD8ziQJJBUvUN9Q17hTpiYVJHQkuaMANzrtUNY0yUCleadDtagXYXKhq09dhHe2beu+ci2xy/0Glwhb593q52iBh85QZOhXm2xrIjce29cTJqxR6Q5gyxlnmrdwBNDwe0cC9ECNeUzVrvf8lbV28rpJJJUyuPWcOfxV8MHH3avgggluw80dYlNIByUHqOH1kz6m+jB8tkI8U6U+o/BZN1DjJL6LkG5uAOuhPBlEpmV8V1s+FVaCfgqblgGyk7X8cddlZ2W1IeIO4WPjFDC4Fyxdc84sux9svEGgpk81kgxh0tuNOXUccRZJCbmQhs5QWKru3dqcZz96xJ1OvMmc5T6Cd4qOw/goZ6wQ+hD9EuxI4f6q3g==';
-    // return t;
+    // return getAppMultiUserInfo(1).trim().replace(/\n/g, '');
+    const t = 'YWki++v23SWNgkrFc92bsTCzVrASKRhAp+JenIGtQy9BygJk9IXONH/ga/M/CuhdCyUql4FZTQrqoNuCpqupwo/Vy7gazPdQc4RmBjD8ziQJJBUvUN9Q17hTpiYVJHQkuaMANzrtUNY0yUCleadDtagXYXKhq09dhHe2beu+ci2xy/0Glwhb593q52iBh85QZOhXm2xrIjce29cTJqxR6Q5gyxlnmrdwBNDwe0cC9ECNeUzVrvf8lbV28rpJJJUyuPWcOfxV8MHH3avgggluw80dYlNIByUHqOH1kz6m+jB8tkI8U6U+o/BZN1DjJL6LkG5uAOuhPBlEpmV8V1s+FVaCfgqblgGyk7X8cddlZ2W1IeIO4WPjFDC4Fyxdc84sux9svEGgpk81kgxh0tuNOXUccRZJCbmQhs5QWKru3dqcZz96xJ1OvMmc5T6Cd4qOw/goZ6wQ+hD9EuxI4f6q3g==';
+    return t;
   }
 
   // 获取评论列表
@@ -696,6 +702,26 @@ $(window).on('load', function() {
     $('.fixed-box-3').fadeOut(150);
     $('body').removeClass('no-scroll');
   });
+
+
+  function fetchInfo(){
+    $.ajax({
+      type: "post",
+      url: "https://vote3.gxnews.com.cn/Api/Wgjh/index/getInfo",
+      data: {
+        cloudgx_signstr: get_cloudgx_signstr(),
+
+      },
+      dataType: "dataType",
+      success: function (response) {
+        const res = JSON.parse(response);
+        console.log(res)
+
+      },
+    });
+  }
+
+  fetchInfo()
 
 });
 
