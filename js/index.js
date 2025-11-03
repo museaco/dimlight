@@ -261,10 +261,10 @@ $(window).on('load', function() {
 
   // handleNoneDialog();
 
-  function fetchNewsList() {
+  function fetchNewsList(moduleId) {
 
     $.ajax({
-      url: `https://apph5.cloudgx.cn/api/content/h5/topic/contentList/page2?contentId=${contentId}&moduleId=8512&current=1&size=20&t=1731405583691`,
+      url: `https://apph5.cloudgx.cn/api/content/h5/topic/contentList/page2?contentId=${contentId}&moduleId=${moduleId}&current=1&size=20&t=1731405583691`,
       type: 'GET',
       contentType: 'application/json',
       success: function(res) {
@@ -287,7 +287,26 @@ $(window).on('load', function() {
     });
   }
 
-  fetchNewsList();
+
+
+
+  function fetchTopic(_contentId, success) {
+    $.ajax({
+      url: 'https://apph5.cloudgx.cn/api/content/h5/topic/detail/v1',
+      type: 'POST',
+      data: JSON.stringify({
+        contentId: _contentId,
+        preview: 1,
+      }),
+      contentType: 'application/json',
+      success: function(res) {
+        typeof success === 'function' && success(res);
+      },
+    });
+  }
+  fetchTopic(contentId,function() {
+    fetchNewsList('9098');
+  })
 
   // 点击跳转广西云
   $body.on('click', '.needApp', function(e) {
