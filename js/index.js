@@ -112,13 +112,13 @@ gsap.to('[data-scale-anim]',{
 })
 
   $('#page-loading').remove();
-  // const isClient = browser.versions.gxrb;
-  const isClient = true;
+  const isClient = browser.versions.gxrb;
+  // const isClient = true;
 
   function get_cloudgx_signstr() {
-    // return getAppMultiUserInfo(1).trim().replace(/\n/g, '');
-    const t = 'YWki++v23SWNgkrFc92bsTCzVrASKRhAp+JenIGtQy9BygJk9IXONH/ga/M/CuhdCyUql4FZTQrqoNuCpqupwo/Vy7gazPdQc4RmBjD8ziQJJBUvUN9Q17hTpiYVJHQkuaMANzrtUNY0yUCleadDtagXYXKhq09dhHe2beu+ci2xy/0Glwhb593q52iBh85QZOhXm2xrIjce29cTJqxR6Q5gyxlnmrdwBNDwe0cC9ECNeUzVrvf8lbV28rpJJJUyuPWcOfxV8MHH3avgggluw80dYlNIByUHqOH1kz6m+jB8tkI8U6U+o/BZN1DjJL6LkG5uAOuhPBlEpmV8V1s+FVaCfgqblgGyk7X8cddlZ2W1IeIO4WPjFDC4Fyxdc84sux9svEGgpk81kgxh0tuNOXUccRZJCbmQhs5QWKru3dqcZz96xJ1OvMmc5T6Cd4qOw/goZ6wQ+hD9EuxI4f6q3g==';
-    return t;
+    return getAppMultiUserInfo(1).trim().replace(/\n/g, '');
+    // const t = 'YWki++v23SWNgkrFc92bsTCzVrASKRhAp+JenIGtQy9BygJk9IXONH/ga/M/CuhdCyUql4FZTQrqoNuCpqupwo/Vy7gazPdQc4RmBjD8ziQJJBUvUN9Q17hTpiYVJHQkuaMANzrtUNY0yUCleadDtagXYXKhq09dhHe2beu+ci2xy/0Glwhb593q52iBh85QZOhXm2xrIjce29cTJqxR6Q5gyxlnmrdwBNDwe0cC9ECNeUzVrvf8lbV28rpJJJUyuPWcOfxV8MHH3avgggluw80dYlNIByUHqOH1kz6m+jB8tkI8U6U+o/BZN1DjJL6LkG5uAOuhPBlEpmV8V1s+FVaCfgqblgGyk7X8cddlZ2W1IeIO4WPjFDC4Fyxdc84sux9svEGgpk81kgxh0tuNOXUccRZJCbmQhs5QWKru3dqcZz96xJ1OvMmc5T6Cd4qOw/goZ6wQ+hD9EuxI4f6q3g==';
+    // return t;
   }
 
   // 获取评论列表
