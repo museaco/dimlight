@@ -164,7 +164,7 @@ $(window).on('load', function() {
 
     $('#textarea-wrap').append(`
      <label>
-      <textarea placeholder="请输入评论..." class="msg-text text-[#6d3f3f] outline-none h-full resize-none w-full bg-transparent border-none text-[.46rem] p-0 m-0"></textarea>
+      <textarea minlength="50" maxlength="200" placeholder="请输入评论..." class="msg-text text-[#6d3f3f] outline-none h-full resize-none w-full bg-transparent border-none text-[.46rem] p-0 m-0"></textarea>
     </label>
     `);
 
@@ -350,8 +350,16 @@ $(window).on('load', function() {
     return new Promise((resolve, reject) => {
 
       var comment = $('.msg-text').val();
-      if (comment === '') {
+
+      if (comment.length === 0) {
         return reject('请输入评论内容');
+      }
+      if (comment.length < 50) {
+        return reject('评论内容不可少于50字');
+      }
+
+      if (comment.length > 200) {
+        return reject('评论内容50-200字以内');
       }
 
       const data = {
