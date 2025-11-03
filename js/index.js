@@ -2,6 +2,7 @@ gsap.registerPlugin(ScrollTrigger);
 const actyid = '952';
 const $body = $('body');
 let page = 1;
+let token = '';
 
 let imgList = [
   // 'https://static.gxrb.com.cn/front_app_data/image/uploadpic/20251103/7ebfac402a23ec4061dd0071fb178689.jpg',
@@ -120,6 +121,21 @@ $(window).on('load', function() {
     return getAppMultiUserInfo(1).trim().replace(/\n/g, '');
     // const t = 'YWki++v23SWNgkrFc92bsTCzVrASKRhAp+JenIGtQy9BygJk9IXONH/ga/M/CuhdCyUql4FZTQrqoNuCpqupwo/Vy7gazPdQc4RmBjD8ziQJJBUvUN9Q17hTpiYVJHQkuaMANzrtUNY0yUCleadDtagXYXKhq09dhHe2beu+ci2xy/0Glwhb593q52iBh85QZOhXm2xrIjce29cTJqxR6Q5gyxlnmrdwBNDwe0cC9ECNeUzVrvf8lbV28rpJJJUyuPWcOfxV8MHH3avgggluw80dYlNIByUHqOH1kz6m+jB8tkI8U6U+o/BZN1DjJL6LkG5uAOuhPBlEpmV8V1s+FVaCfgqblgGyk7X8cddlZ2W1IeIO4WPjFDC4Fyxdc84sux9svEGgpk81kgxh0tuNOXUccRZJCbmQhs5QWKru3dqcZz96xJ1OvMmc5T6Cd4qOw/goZ6wQ+hD9EuxI4f6q3g==';
     // return t;
+  }
+
+  // 获取抽奖token
+  function getToken() {
+    $.ajax({
+      type: 'post',
+      url: 'https://vote3.gxnews.com.cn/Api/Wgjh/index/getToken',
+      data: {
+        cloudgx_signstr: get_cloudgx_signstr(),
+      },
+      success: function(response) {
+        token = response.data;
+        fetchInfo();
+      },
+    });
   }
 
   // 获取评论列表
@@ -710,7 +726,7 @@ $(window).on('load', function() {
       url: 'https://vote3.gxnews.com.cn/Api/Wgjh/index/getInfo',
       data: {
         cloudgx_signstr: get_cloudgx_signstr(),
-
+        token,
       },
       dataType: 'dataType',
       success: function(response) {
