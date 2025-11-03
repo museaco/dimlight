@@ -1,14 +1,24 @@
-window.__auther__ = 'bHVzaGVuZzEwdkAxNjMsY29t';
 gsap.registerPlugin(ScrollTrigger);
-
+const actyid = '952';
 const $body = $('body');
+let page = 1;
 
-function Toast(message = '操作成功') {
+let imgList = [
+  // 'https://static.gxrb.com.cn/front_app_data/image/uploadpic/20251103/7ebfac402a23ec4061dd0071fb178689.jpg',
+  // 'https://static.gxrb.com.cn/front_app_data/image/uploadpic/20251103/7ebfac402a23ec4061dd0071fb178689.jpg',
+  // 'https://static.gxrb.com.cn/front_app_data/image/uploadpic/20251103/7ebfac402a23ec4061dd0071fb178689.jpg',
+  // 'https://static.gxrb.com.cn/front_app_data/image/uploadpic/20251103/7ebfac402a23ec4061dd0071fb178689.jpg',
+  // 'https://static.gxrb.com.cn/front_app_data/image/uploadpic/20251103/7ebfac402a23ec4061dd0071fb178689.jpg',
+  // 'https://static.gxrb.com.cn/front_app_data/image/uploadpic/20251103/7ebfac402a23ec4061dd0071fb178689.jpg',
+];
+let videoList = [];
 
-  $('#toast').remove();
+function toast(message = '操作成功') {
+
+  $('div[data-xo-toast]').remove();
 
   const $toast = $(`
-    <div id="toast" style="
+    <div data-xo-toast   style="
       position: fixed;
       left: 50%;
       top: 0;
@@ -20,7 +30,7 @@ function Toast(message = '操作成功') {
       font-size: .40rem;
       opacity: 0;
       pointer-events: none;
-      z-index: 9999;
+      z-index: 8888;
       font-family: 'FZZYK', system-ui;
     ">
       ${message}
@@ -39,16 +49,90 @@ function Toast(message = '操作成功') {
     .to($toast, { autoAlpha: 0, y: '-1rem', duration: 0.3, delay: 1.5, ease: 'power2.in' });
 }
 
-$(window).on('load', function() {
-  $('#page-loading').remove();
-  const isClient = browser.versions.gxrb;
+function toast_with_mask(message = '操作成功') {
+  $('div[data-xo-toast-with-mask]').remove();
 
-  console.log(browser)
-  console.log(browser.versions.gxrb)
+  const $toast = $(`
+    <div data-xo-toast-with-mask style="
+      position: fixed;
+      inset: 0;
+      z-index: 7777;
+      background: rgba(0, 0, 0, 0.4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+        transform: scale(0);
+      
+    ">
+      <div  style="
+   
+        background: #8f4900;
+        color: #fff;
+        padding: .2rem .35rem;
+        border-radius: .2rem;
+        font-size: .40rem;
+        pointer-events: none;
+    
+        font-family: 'FZZYK', system-ui;
+      ">
+        <p>${message}</p>
+      </div>
+    </div>
+  `);
+
+  $body.append($toast);
+
+  const tl = gsap.timeline({ paused: true });
+  tl.to($toast, { autoAlpha: 1, scale: 1, duration: 0.3, ease: 'back.out(1.7)' });
+
+  tl.play();
+
+  return function closeToast() {
+    gsap.to($toast, {
+      autoAlpha: 0,
+      scale: 0,
+      duration: 0.3,
+      ease: 'power2.in',
+      onComplete() {
+        $toast.remove();
+      },
+    });
+  };
+}
+
+$(window).on('load', function() {
+
+  // imgList.forEach((fileUrl) => {
+  //
+  //   $('.preview-list')
+  //     .append(
+  //       `<div class="uploaded-image"><img src="${fileUrl}" alt=""><span class="preview-close"></span></div>`,
+  //     )
+  //     .addClass('show');
+  // });
+
+  $('#page-loading').remove();
+  // const isClient = browser.versions.gxrb;
+  const isClient = true;
+
+  function get_cloudgx_signstr() {
+    // return getAppMultiUserInfo(1).trim().replace(/\n/g, '');
+    const t = 'YWki++v23SWNgkrFc92bsTCzVrASKRhAp+JenIGtQy9BygJk9IXONH/ga/M/CuhdCyUql4FZTQrqoNuCpqupwo/Vy7gazPdQc4RmBjD8ziQJJBUvUN9Q17hTpiYVJHQkuaMANzrtUNY0yUCleadDtagXYXKhq09dhHe2beu+ci2xy/0Glwhb593q52iBh85QZOhXm2xrIjce29cTJqxR6Q5gyxlnmrdwBNDwe0cC9ECNeUzVrvf8lbV28rpJJJUyuPWcOfxV8MHH3avgggluw80dYlNIByUHqOH1kz6m+jB8tkI8U6U+o/BZN1DjJL6LkG5uAOuhPBlEpmV8V1s+FVaCfgqblgGyk7X8cddlZ2W1IeIO4WPjFDC4Fyxdc84sux9svEGgpk81kgxh0tuNOXUccRZJCbmQhs5QWKru3dqcZz96xJ1OvMmc5T6Cd4qOw/goZ6wQ+hD9EuxI4f6q3g==';
+    return t;
+  }
+
+  function getComments (){
+
+  }
+
+  console.log(browser);
+  console.log(browser.versions.gxrb);
   if (isClient) {
 
-    $('#upload-btn')
-      .append(`<input accept="image/heic,image/jpeg,image/jpg" type="file" class="absolute inset-0 z-10 border-none outline-none opacity-0 cursor-pointer" draggable="false" />`);
+    $('#upload-img')
+      .append(
+        `<input multiple accept="image/heic,image/jpeg,image/jpg" type="file" class="absolute inset-0 z-10 border-none outline-none opacity-0 cursor-pointer" draggable="false" />`);
 
     createDialogueAnimate({
       showBtn: 'button[data-btn="myly"]',
@@ -58,13 +142,13 @@ $(window).on('load', function() {
 
     $('#textarea-wrap').append(`
      <label>
-              <textarea placeholder="" class="text-[#6d3f3f] image-placeholder outline-none h-full resize-none w-full bg-transparent border-none text-[.46rem] p-0 m-0"></textarea>
-            </label>
+      <textarea placeholder="" class="msg-text text-[#6d3f3f] image-placeholder outline-none h-full resize-none w-full bg-transparent border-none text-[.46rem] p-0 m-0"></textarea>
+    </label>
     `);
 
   } else {
 
-    $('#upload-btn').addClass('needApp');
+    $('#upload-img').addClass('needApp');
     $('button[data-btn="submit"]').addClass('needApp');
     $('button[data-btn="myly"]').addClass('needApp');
 
@@ -75,7 +159,7 @@ $(window).on('load', function() {
 
   const clipboard = new ClipboardJS('.copy-btn');
   clipboard.on('success', function(e) {
-    Toast('复制成功');
+    toast('复制成功');
     e.clearSelection();
   });
 
@@ -242,7 +326,59 @@ $(window).on('load', function() {
   function handleSubmit() {
 
     return new Promise((resolve, reject) => {
-      reject();
+
+      var comment = $('.msg-text').val();
+      if (comment === '') {
+        return reject('请输入评论内容');
+      }
+
+      const data = {
+        actyid: actyid,
+        content: comment, // 留言内容
+        images: JSON.stringify(imgList),
+        videos: JSON.stringify(videoList),
+        tenant_id: 114,
+        star: 3,
+        status: 2,
+        cloudgx_signstr: get_cloudgx_signstr(),
+        newtime_token: 'e534cd480b1728e484ce9674f4edeb92',
+        newtime_userid: 258,
+        // cloudgx_signstr: getAppMultiUserInfo(1).trim().replace(/\n/g, "")
+      };
+      let formData = new FormData();
+      for (let i in data) {
+        formData.append(i, data[i]);
+      }
+
+      toast_with_mask('正在提交...');
+      $.ajax({
+        url: `https://zuul.gxrb.com.cn/api-newtime/pub/activityComment/add`,
+        type: 'POST',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function(res) {
+          if (res.data.accommentid) {
+            resolve()
+            $('.msg-text').val('');
+            imgList = [];
+            videoList = [];
+            $('.preview-list').html('').removeClass('show');
+            // $("body").removeClass("listActive");
+            page = 1;
+            // getToken();
+            getComments();
+          } else {
+            reject('网络错误，请稍后重试')
+
+          }
+          console.log(res);
+        },
+        error: function() {
+          reject('网络错误，请稍后重试')
+        },
+      });
+
     });
 
   }
@@ -253,8 +389,8 @@ $(window).on('load', function() {
       return;
     }
 
-    handleSubmit().then(handleSubmitDialog).catch(() => {
-      Toast('提交失败，请稍后重试');
+    handleSubmit().then(handleSubmitDialog).catch((msg) => {
+      toast(msg);
     });
 
   });
@@ -287,9 +423,6 @@ $(window).on('load', function() {
     });
   }
 
-
-
-
   function fetchTopic(_contentId, success) {
     $.ajax({
       url: 'https://apph5.cloudgx.cn/api/content/h5/topic/detail/v1',
@@ -304,9 +437,10 @@ $(window).on('load', function() {
       },
     });
   }
-  fetchTopic(contentId,function() {
+
+  fetchTopic(contentId, function() {
     fetchNewsList('9098');
-  })
+  });
 
   // 点击跳转广西云
   $body.on('click', '.needApp', function(e) {
@@ -349,6 +483,89 @@ $(window).on('load', function() {
     }, 500);
   });
 
+  // 监听图片上传 限制上传最多六张图片
+  $('#upload-img').on('change', function(e) {
+    const files = e.target.files;
+    const existingImages = imgList.length;
+    if (files.length < 1) {
+      return;
+    }
+    console.log(files);
+    if (files.length + existingImages > 6) {
+      toast('最多上传六张图片');
+      return;
+    }
+    // 限制上传图片大小不大于10M
+    // 用户重新选择相同文件，有些浏览器（尤其是 Chrome）可能不会触发 change 事件。
+    const MAX_SIZE = 10 * 1024 * 1024; // 10MB
+
+    for (const file of files) {
+      if (file.size > MAX_SIZE) {
+        const $input = $('#upload-img');
+        $input.val('');
+        $input[0].value = ''; // 兼容清空
+        toast('图片大小不能超过 10M');
+        return;
+      }
+    }
+
+    const close_toast = toast_with_mask('图片上传中...');
+
+    const formData = new FormData();
+    Array.from(files).forEach((file, index) => {
+      formData.append(`file[${index}]`, file);
+    });
+    formData.append('cloudgx_signstr', get_cloudgx_signstr());
+    formData.append('scene', 'frontApp');
+
+    $.ajax({
+      type: 'post',
+      url: 'https://zuul.gxrb.com.cn/api-upload/front/uploadImage/gxrbapp',
+      data: formData,
+      processData: false,
+      contentType: false,
+      success: function(response) {
+        if (response.code === 0) {
+          response.data.file.forEach((item) => {
+            imgList.push(item.fileUrl);
+            $('.preview-list')
+              .append(
+                `<div class="uploaded-image"><img src="${item.fileUrl}" alt=""><span class="preview-close"></span></div>`,
+              )
+              .addClass('show');
+          });
+          toast('图片上传成功');
+        } else {
+          toast(response.msg || '图片上传失败，请稍后重试');
+        }
+        // 清空input
+        // $('#upload-img').val('');
+      },
+      error: function() {
+        toast('网络错误，请稍后重试');
+        // 上传完成清空input
+        // $('#upload-img').val('');
+      },
+      complete: function(xhr, status) {
+        close_toast();
+      },
+    });
+  });
+
+  // 删除图片或视频
+  $('.preview-list').on('click', '.preview-close', function() {
+    $(this).parent().remove();
+    const src = $(this).siblings('img, video').attr('src');
+    const index = imgList.indexOf(src);
+    if (index !== -1) {
+      imgList.splice(index, 1);
+    } else {
+      const videoIndex = videoList.indexOf(src);
+      if (videoIndex !== -1) {
+        videoList.splice(videoIndex, 1);
+      }
+    }
+  });
 });
 
 
