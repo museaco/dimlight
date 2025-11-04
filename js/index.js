@@ -125,16 +125,15 @@ $(window).on('load', function() {
   });
 
   $('#page-loading').remove();
-  // const isClient = browser.versions.gxrb; // 控制是否是客户端环境
-
-  const isClient = true;
+  const isClient = browser.versions.gxrb; // 控制是否是客户端环境
+  // const isClient = true;
 
   function get_cloudgx_signstr() {
-    // return getAppMultiUserInfo(1).trim().replace(/\n/g, '');
+    return getAppMultiUserInfo(1).trim().replace(/\n/g, '');
 
     // 临时测试直接写 'YWki++v23SWNgkrFc92bsTCz...'
-    const t = 'YWki++v23SWNgkrFc92bsTCzVrASKRhAp+JenIGtQy9BygJk9IXONH/ga/M/CuhdCyUql4FZTQrqoNuCpqupwo/Vy7gazPdQc4RmBjD8ziQJJBUvUN9Q17hTpiYVJHQkuaMANzrtUNY0yUCleadDtagXYXKhq09dhHe2beu+ci2xy/0Glwhb593q52iBh85QZOhXm2xrIjce29cTJqxR6Q5gyxlnmrdwBNDwe0cC9ECNeUzVrvf8lbV28rpJJJUyuPWcOfxV8MHH3avgggluw80dYlNIByUHqOH1kz6m+jB8tkI8U6U+o/BZN1DjJL6LkG5uAOuhPBlEpmV8V1s+FVaCfgqblgGyk7X8cddlZ2W1IeIO4WPjFDC4Fyxdc84sux9svEGgpk81kgxh0tuNOXUccRZJCbmQhs5QWKru3dqcZz96xJ1OvMmc5T6Cd4qOw/goZ6wQ+hD9EuxI4f6q3g==';
-    return t;
+    // const t = 'YWki++v23SWNgkrFc92bsTCzVrASKRhAp+JenIGtQy9BygJk9IXONH/ga/M/CuhdCyUql4FZTQrqoNuCpqupwo/Vy7gazPdQc4RmBjD8ziQJJBUvUN9Q17hTpiYVJHQkuaMANzrtUNY0yUCleadDtagXYXKhq09dhHe2beu+ci2xy/0Glwhb593q52iBh85QZOhXm2xrIjce29cTJqxR6Q5gyxlnmrdwBNDwe0cC9ECNeUzVrvf8lbV28rpJJJUyuPWcOfxV8MHH3avgggluw80dYlNIByUHqOH1kz6m+jB8tkI8U6U+o/BZN1DjJL6LkG5uAOuhPBlEpmV8V1s+FVaCfgqblgGyk7X8cddlZ2W1IeIO4WPjFDC4Fyxdc84sux9svEGgpk81kgxh0tuNOXUccRZJCbmQhs5QWKru3dqcZz96xJ1OvMmc5T6Cd4qOw/goZ6wQ+hD9EuxI4f6q3g==';
+    // return t;
   }
 
   // 获取评论列表
@@ -221,9 +220,97 @@ $(window).on('load', function() {
     });
   }
 
+  // 获取我的评论列表
+  function fetchMyComments() {
+
+    const user = getAppMultiUserInfo(0)
+    console.log(user)
+    return
+    const params = new URLSearchParams();
+    params.append('page', page);
+    params.append('tenant_id', '114');
+    params.append('status', '1');
+    params.append('actyid', actyid);
+    params.append('size', '20');
+
+    $.ajax({
+      url: `https://zuul.gxrb.com.cn/api-newtime/pub/activityComment/list?${params}`,
+      type: 'GET',
+      success: function(data) {
+        if (data.code === 0) {
+          const comments = data.data.list;
+          if (comments.length === 0) {
+            showMore = false;
+            if (page === 1) {
+              $('.comments').hide();
+              return;
+            }
+          }
+          $('.comments').show();
+          let html = '';
+          comments.forEach((comment) => {
+            html += `<li class="comment">
+              <img src="${
+              comment.avatar ||
+              'https://avatar.gxnews.com.cn/avatar/000/62/07/45_avatar_middle.jpg'
+            }" class="comment-avatar" />
+              <div class="comment-content">
+                <div class="comment-author">${
+              comment.audit_user_name || '游客'
+            }</div>
+                <div class="comment-text">${comment.content}</div>
+                <div class="comment-imgs">
+                `;
+            var images = JSON.parse(comment.images);
+            var videos = JSON.parse(comment.videos);
+            if (videos.length > 0) {
+              videos.forEach((video) => {
+                const posterUrl = video.split('?')[0] + '.jpg';
+                html += `<video
+                        src="${video}"
+                        controls
+                        poster="${posterUrl}"
+                        webkit-playsinline="isiPhoneShowPlaysinline"
+                        playsinline="isiPhoneShowPlaysinline"
+                        preload="auto"
+                        ></video>`;
+              });
+            }
+            if (images.length > 0) {
+              html += '<div class="comment-img-list">';
+              images.forEach((img) => {
+                html += `<img src="${img}" />`;
+              });
+              html += '</div>';
+            }
+            html += `</div>
+              </div>
+            </li>`;
+          });
+          // setTimeout(() => {
+          //   handleVideoFullscreen();
+          // }, 500);
+          if (page === 1) {
+            $('.comment-list').html(html);
+            if (data.data.total_size < 21) {
+              $('.comment-more').hide();
+            }
+          } else {
+            $('.comment-list').append(html);
+          }
+        } else {
+          console.error('Error:', data.message);
+        }
+      },
+      error: function(xhr, status, error) {
+        console.error('Error:', error);
+      },
+    });
+  }
+
   fetchComments();
-  console.log(browser);
-  console.log(browser.versions.gxrb);
+  fetchMyComments();
+
   if (isClient) {
 
     $('#upload-img')
@@ -317,11 +404,15 @@ $(window).on('load', function() {
     hideBtn,
     modal,
     hideComplete,
+    onShowBtnClick
   }) {
     /** 点击弹出 */
     if (showBtn) {
-      $(showBtn).on('click', function() {
+      $(showBtn).on('click', function(e) {
         showDialog(modal);
+        if(typeof onShowBtnClick==='function') {
+          onShowBtnClick(e)
+        }
       });
     }
 
