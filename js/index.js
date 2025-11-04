@@ -223,50 +223,51 @@ $(window).on('load', function() {
   // 获取我的评论列表
   function fetchMyComments() {
 
-    const user = getAppMultiUserInfo(0)
-    console.log(user)
-    return
-    const params = new URLSearchParams();
-    params.append('page', page);
-    params.append('tenant_id', '114');
-    params.append('status', '1');
-    params.append('actyid', actyid);
-    params.append('size', '20');
+   try{
+     const user = getAppMultiUserInfo(0)
 
-    $.ajax({
-      url: `https://zuul.gxrb.com.cn/api-newtime/pub/activityComment/list?${params}`,
-      type: 'GET',
-      success: function(data) {
-        if (data.code === 0) {
-          const comments = data.data.list;
-          if (comments.length === 0) {
-            showMore = false;
-            if (page === 1) {
-              $('.comments').hide();
-              return;
-            }
-          }
-          $('.comments').show();
-          let html = '';
-          comments.forEach((comment) => {
-            html += `<li class="comment">
+     const params = new URLSearchParams();
+     params.append('page', page);
+     params.append('tenant_id', '114');
+     params.append('status', '1');
+     params.append('actyid', actyid);
+     params.append('size', '20');
+     params.append('userid', user.uid);
+
+     $.ajax({
+       url: `https://zuul.gxrb.com.cn/api-newtime/pub/activityComment/list?${params}`,
+       type: 'GET',
+       success: function(data) {
+         if (data.code === 0) {
+           const comments = data.data.list;
+           if (comments.length === 0) {
+             showMore = false;
+             if (page === 1) {
+               $('.comments').hide();
+               return;
+             }
+           }
+           $('.comments').show();
+           let html = '';
+           comments.forEach((comment) => {
+             html += `<li class="comment">
               <img src="${
-              comment.avatar ||
-              'https://avatar.gxnews.com.cn/avatar/000/62/07/45_avatar_middle.jpg'
-            }" class="comment-avatar" />
+               comment.avatar ||
+               'https://avatar.gxnews.com.cn/avatar/000/62/07/45_avatar_middle.jpg'
+             }" class="comment-avatar" />
               <div class="comment-content">
                 <div class="comment-author">${
-              comment.audit_user_name || '游客'
-            }</div>
+               comment.audit_user_name || '游客'
+             }</div>
                 <div class="comment-text">${comment.content}</div>
                 <div class="comment-imgs">
                 `;
-            var images = JSON.parse(comment.images);
-            var videos = JSON.parse(comment.videos);
-            if (videos.length > 0) {
-              videos.forEach((video) => {
-                const posterUrl = video.split('?')[0] + '.jpg';
-                html += `<video
+             var images = JSON.parse(comment.images);
+             var videos = JSON.parse(comment.videos);
+             if (videos.length > 0) {
+               videos.forEach((video) => {
+                 const posterUrl = video.split('?')[0] + '.jpg';
+                 html += `<video
                         src="${video}"
                         controls
                         poster="${posterUrl}"
@@ -274,45 +275,50 @@ $(window).on('load', function() {
                         playsinline="isiPhoneShowPlaysinline"
                         preload="auto"
                         ></video>`;
-              });
-            }
-            if (images.length > 0) {
-              html += '<div class="comment-img-list">';
-              images.forEach((img) => {
-                html += `<img src="${img}" />`;
-              });
-              html += '</div>';
-            }
-            html += `</div>
+               });
+             }
+             if (images.length > 0) {
+               html += '<div class="comment-img-list">';
+               images.forEach((img) => {
+                 html += `<img src="${img}" />`;
+               });
+               html += '</div>';
+             }
+             html += `</div>
               </div>
             </li>`;
-          });
-          // setTimeout(() => {
-          //   handleVideoFullscreen();
-          // }, 500);
-          if (page === 1) {
-            $('.comment-list').html(html);
-            if (data.data.total_size < 21) {
-              $('.comment-more').hide();
-            }
-          } else {
-            $('.comment-list').append(html);
-          }
-        } else {
-          console.error('Error:', data.message);
-        }
-      },
-      error: function(xhr, status, error) {
-        console.error('Error:', error);
-      },
-    });
+           });
+           // setTimeout(() => {
+           //   handleVideoFullscreen();
+           // }, 500);
+           if (page === 1) {
+             $('.comment-list').html(html);
+             if (data.data.total_size < 21) {
+               $('.comment-more').hide();
+             }
+           } else {
+             $('.comment-list').append(html);
+           }
+         } else {
+           console.error('Error:', data.message);
+         }
+       },
+       error: function(xhr, status, error) {
+         console.error('Error:', error);
+       },
+     });
+   }catch (e) {
+
+   }
   }
 
-  fetchComments();
-  fetchMyComments();
+  // fetchComments();
+
+
+
 
   if (isClient) {
-
+    fetchMyComments();
     $('#upload-img')
       .append(
         `<input multiple accept="image/heic,image/jpeg,image/jpg" type="file" class="absolute inset-0 z-10 border-none outline-none opacity-0 cursor-pointer" draggable="false" />`);
