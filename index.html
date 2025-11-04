@@ -54,9 +54,10 @@
 <div id="page-loading" class="flex flex-col justify-center items-center fixed inset-0 z-[100] bg-[var(--bg-color)]">
   <style>
     /* From Uiverse.io by adamgiebl */
-    body{
+    body {
       overflow: hidden;
     }
+
     .dots-container {
       display: flex;
       align-items: center;
@@ -244,18 +245,18 @@
       </div>
 
       <div class="relative">
-        <img src="./images/xw/178.png" class="w-full select-none pointer-events-none" draggable="false" alt="">
+        <!--        <img src="./images/xw/178.png" class="w-full select-none pointer-events-none" draggable="false" alt="">-->
 
-        <div class="absolute inset-0 ">
-          <div class="news-wrapper no-scrollbar ml-[1rem] mr-[1rem] mt-[1.4rem]  h-[10.5rem] overflow-y-auto flex flex-col gap-[.4rem]">
-
-
+        <div class="relative bg-no-repeat bg-[length:100%_auto] bg-[top_center]" style="background-image: url('./images/815093.png');">
+          <div class="pt-[1.5rem]"></div>
+          <div class="relative news-wrapper  no-scrollbar ml-[1rem] mr-[1rem]   min-h-[3rem]  max-h-[11rem] overflow-y-auto flex flex-col">
           </div>
+          <div class="absolute -bottom-[1.2rem] w-full left-0 h-[1.2rem] bg-no-repeat bg-[length:100%_auto] bg-[bottom_center]" style="background-image: url('./images/815093.png');"></div>
         </div>
       </div>
     </section>
-
-    <footer class="-mt-[1.4rem] h-[5.22rem] bg-no-repeat bg-[length:100%_100%] bg-[bottom_center]" style="background-image: url('./images/footer/456.png');">
+    <div class="pt-[1.2rem]"></div>
+    <footer class=" -mt-[1.4rem] h-[5.22rem] bg-no-repeat bg-[length:100%_100%] bg-[bottom_center]" style="background-image: url('./images/footer/456.png');">
       <img src="./images/footer/123.png" class="w-[7.07rem] pt-[2.63rem] block mx-auto select-none pointer-events-none" draggable="false" alt="">
     </footer>
 

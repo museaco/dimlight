@@ -715,6 +715,26 @@ button[data-press]:active, img[data-press]:active {
   top: 4.2rem;
 }
 
+.-bottom-\[2rem\] {
+  bottom: -2rem;
+}
+
+.-left-\[1rem\] {
+  left: -1rem;
+}
+
+.-right-\[1rem\] {
+  right: -1rem;
+}
+
+.-bottom-\[1\.5rem\] {
+  bottom: -1.5rem;
+}
+
+.-bottom-\[1\.2rem\] {
+  bottom: -1.2rem;
+}
+
 .z-10 {
   z-index: 10;
 }
@@ -852,6 +872,14 @@ button[data-press]:active, img[data-press]:active {
   margin-top: 4rem;
 }
 
+.mt-\[2\.4rem\] {
+  margin-top: 2.4rem;
+}
+
+.mt-\[1\.5rem\] {
+  margin-top: 1.5rem;
+}
+
 .block {
   display: block;
 }
@@ -920,8 +948,40 @@ button[data-press]:active, img[data-press]:active {
   height: 100%;
 }
 
+.h-\[2rem\] {
+  height: 2rem;
+}
+
+.h-\[1\.5rem\] {
+  height: 1.5rem;
+}
+
+.h-\[1\.2rem\] {
+  height: 1.2rem;
+}
+
+.max-h-\[10\.5rem\] {
+  max-height: 10.5rem;
+}
+
+.max-h-\[10\.8rem\] {
+  max-height: 10.8rem;
+}
+
+.max-h-\[11rem\] {
+  max-height: 11rem;
+}
+
 .min-h-0 {
   min-height: 0px;
+}
+
+.min-h-\[4rem\] {
+  min-height: 4rem;
+}
+
+.min-h-\[3rem\] {
+  min-height: 3rem;
 }
 
 .w-\[\.93rem\] {
@@ -1049,6 +1109,10 @@ button[data-press]:active, img[data-press]:active {
   width: 100%;
 }
 
+.w-\[10\.26rem\] {
+  width: 10.26rem;
+}
+
 .min-w-0 {
   min-width: 0px;
 }
@@ -1128,6 +1192,10 @@ button[data-press]:active, img[data-press]:active {
   white-space: nowrap;
 }
 
+.rounded-\[\.5rem\] {
+  border-radius: .5rem;
+}
+
 .border-none {
   border-style: none;
 }
@@ -1156,8 +1224,21 @@ button[data-press]:active, img[data-press]:active {
   background-color: transparent;
 }
 
+.bg-red-600\/30 {
+  background-color: rgb(220 38 38 / 0.3);
+}
+
+.bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
+}
+
 .bg-\[length\:100\%_100\%\] {
   background-size: 100% 100%;
+}
+
+.bg-\[length\:100\%_auto\] {
+  background-size: 100% auto;
 }
 
 .bg-\[bottom_center\] {
@@ -1170,6 +1251,10 @@ button[data-press]:active, img[data-press]:active {
 
 .bg-center {
   background-position: center;
+}
+
+.bg-\[left_top\] {
+  background-position: left top;
 }
 
 .bg-no-repeat {
@@ -1193,6 +1278,26 @@ button[data-press]:active, img[data-press]:active {
 .px-\[\.38rem\] {
   padding-left: .38rem;
   padding-right: .38rem;
+}
+
+.px-\[\.3rm\] {
+  padding-left: .3rm;
+  padding-right: .3rm;
+}
+
+.py-\[\.2rem\] {
+  padding-top: .2rem;
+  padding-bottom: .2rem;
+}
+
+.px-\[\.5rem\] {
+  padding-left: .5rem;
+  padding-right: .5rem;
+}
+
+.py-\[\.5rem\] {
+  padding-top: .5rem;
+  padding-bottom: .5rem;
 }
 
 .pb-\[\.69rem\] {
@@ -1241,6 +1346,30 @@ button[data-press]:active, img[data-press]:active {
 
 .pt-\[2rem\] {
   padding-top: 2rem;
+}
+
+.pt-\[2\.4rem\] {
+  padding-top: 2.4rem;
+}
+
+.pt-\[\.4rem\] {
+  padding-top: .4rem;
+}
+
+.pt-\[1rem\] {
+  padding-top: 1rem;
+}
+
+.pt-\[1\.3rem\] {
+  padding-top: 1.3rem;
+}
+
+.pt-\[1\.5rem\] {
+  padding-top: 1.5rem;
+}
+
+.pt-\[1\.2rem\] {
+  padding-top: 1.2rem;
 }
 
 .text-center {
