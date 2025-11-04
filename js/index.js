@@ -112,6 +112,14 @@ $(window).on('load', function() {
     ease: 'power1.inOut',
   });
 
+  gsap.to('[data-scale-anim="1.05"]', {
+    scale: 1.08,
+    duration: 1,
+    yoyo: true,
+    repeat: -1,
+    ease: 'power1.inOut',
+  });
+
   $('#page-loading').remove();
   const isClient = browser.versions.gxrb;
 
@@ -513,7 +521,7 @@ $(window).on('load', function() {
       contentType: 'application/json',
       success: function(res) {
         const records = (res.data || {}).records || [];
-        records.slice(0, 12).forEach(item => {
+        records.slice(0, 1).forEach(item => {
           $('.news-wrapper').append(`
           <a class="flex " data-id="${item.contentId}" target="_blank" href="${articleLink}/${item.contentId}">
             <div class="w-[4.01rem] h-[2.31rem] shrink-0">
@@ -547,7 +555,8 @@ $(window).on('load', function() {
   }
 
   fetchTopic(contentId, function() {
-    fetchNewsList('9098');
+    // fetchNewsList('9098');
+    fetchNewsList('8512');
   });
 
   // 点击跳转广西云
@@ -737,7 +746,9 @@ $(window).on('load', function() {
     });
   }
 
-  fetchInfo();
+  if (isClient) {
+    fetchInfo();
+  }
 
 });
 
